@@ -1,18 +1,11 @@
 import './App.css'
+import {LoginPage} from "./component/pages/LOGIN/LoginPage.jsx";
 
 function App() {
 
-  return (<div>
-    <h1>Bienvenue chez nous !</h1>
-    <br/>
-    <h2>Connectez-vous</h2>
-    <form>
-      <input type={"text"} placeholder={"Entrez votre prénom..."} required/>
-      <button>
-        Accéder à votre espace
-      </button>
-    </form>
-  </div>)
+  return <div>
+    <LoginPage/>
+  </div>
 }
 
 export default App
