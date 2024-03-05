@@ -1,8 +1,10 @@
 import {LoginForm} from "./LoginForm.jsx";
 import styled from "styled-components";
+import {Logo} from "../../reusable-ui/Logo.jsx";
 
 export const LoginPage = () => {
     return <LoginPageStyled>
+        <Logo className={"logo"}/>
         <LoginForm/>
     </LoginPageStyled>
 }
@@ -18,4 +20,8 @@ const LoginPageStyled = styled.div`
     background-size: cover;
     background-position: center;
     
+    .logo {
+        transform: scale(3.5);
+        margin-bottom: 70px;
+    }
 `

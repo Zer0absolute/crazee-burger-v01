@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import {theme} from "../../theme/index.jsx";
 
-export const Logo = () => {
+export const Logo = ({ className }) => {
     return (
-        <LogoStyled>
+        <LogoStyled className={className}>
             <h1>crazee</h1>
             <img src="public/images/F03-logo-burger-orange.png" alt="logo burger orange"/>
             <h1>burger</h1>
