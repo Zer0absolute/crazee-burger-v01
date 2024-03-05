@@ -1,5 +1,11 @@
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import styled from "styled-components";
+import {TextInput} from "../../reusable-ui/TextInput.jsx";
+import { BsPersonCircle } from "react-icons/bs";
+import { IoIosArrowForward } from "react-icons/io";
+import {PrimaryButton} from "../../reusable-ui/PrimaryButton.jsx";
+import {theme} from "../../../theme/index.jsx";
 
 export const LoginForm = () => {
     const [inputValue, setInputValue] = useState('');
@@ -13,13 +19,57 @@ export const LoginForm = () => {
       setInputValue(event.target.value)
     }
 
-    return <form action={'submit'} onSubmit={handleSubmit}>
-            <h1>Bienvenue chez nous !</h1>
-            <br/>
-            <h2>Connectez-vous</h2>
-                <input type={"text"} value={inputValue} onChange={handleChange} placeholder={"Entrez votre prénom..."} required/>
-                <button>
-                    Accéder à votre espace
-                </button>
-        </form>
+    return <LoginFormStyled action={'submit'} onSubmit={handleSubmit}>
+            <div>
+                <h1>Bienvenue chez nous !</h1>
+                <hr/>
+                <h2>Connectez-vous</h2>
+            </div>
+            <div className="form-container">
+                <TextInput
+                    value={inputValue}
+                    onChange={handleChange}
+                    Icon={<BsPersonCircle />}
+                    placeholder='Entrez votre prénom'
+                    required
+                />
+                <PrimaryButton
+                    label={'Accéder à mon espace'}
+                    Icon={<IoIosArrowForward />}
+                />
+            </div>
+        </LoginFormStyled>
 }
+
+const LoginFormStyled = styled.form`
+    //background: red;
+    width: 400px;
+    
+    h1, h2 {
+        font-family: Amatic SC, cursive;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: ${theme.colors.white};
+    }
+    
+    h1 {
+        margin: 30px 0 30px 0;
+        font-size: ${theme.fonts.size.P5};
+    }
+    
+    hr {
+        border: 1px solid ${theme.colors.loginLine};
+    }
+    
+    h2 {
+        margin-top: 40px;
+        font-size: ${theme.fonts.size.P4};
+    }
+    
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+`
