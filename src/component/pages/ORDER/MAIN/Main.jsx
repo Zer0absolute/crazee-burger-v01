@@ -5,13 +5,16 @@ import {theme} from "../../../../theme/index.jsx";
 export const Main = () => {
     return (
         <MainStyled>
-            <Navbar/>
         </MainStyled>
     )
 }
 
 const MainStyled = styled.main`
     background: ${theme.colors.background_white};
-    height: 95vh;
-    width: 1400px;
+    height: calc(95vh - 10vh);
+    border-bottom-left-radius: ${theme.borderRadius.extraRound};
+    border-bottom-right-radius: ${theme.borderRadius.extraRound};
+    box-shadow: ${theme.shadows.strong};
+    
+    overflow: hidden;
 `

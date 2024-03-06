@@ -4,9 +4,14 @@ import {Navbar} from "./Navbar/Navbar.jsx";
 import {Main} from "./MAIN/Main.jsx";
 
 export const OrderPage = () => {
-    return <OrderPageStyled>
-        <Main/>
-    </OrderPageStyled>
+    return (
+        <OrderPageStyled>
+            <div className="container">
+                <Navbar/>
+                <Main/>
+            </div>
+        </OrderPageStyled>
+    )
 }
 
 const OrderPageStyled = styled.div`
@@ -15,4 +20,10 @@ const OrderPageStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    
+    .container {
+        height: 95vh;
+        width: 1400px;
+        position: relative;
+    }
 `
