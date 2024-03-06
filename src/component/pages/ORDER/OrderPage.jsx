@@ -1,12 +1,11 @@
 import styled from "styled-components";
 import {theme} from "../../../theme/index.jsx";
 import {Navbar} from "./Navbar/Navbar.jsx";
+import {Main} from "./MAIN/Main.jsx";
 
 export const OrderPage = () => {
     return <OrderPageStyled>
-        <div className="container">
-            <Navbar />
-        </div>
+        <Main/>
     </OrderPageStyled>
 }
 
@@ -16,10 +15,4 @@ const OrderPageStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    .container {
-        background: ${theme.colors.background_white};
-        height: 95vh;
-        width: 1400px;
-    }
 `
