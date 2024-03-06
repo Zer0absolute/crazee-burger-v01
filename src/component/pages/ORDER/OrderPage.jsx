@@ -1,13 +1,13 @@
 import {Link, useParams} from "react-router-dom";
 import styled from "styled-components";
+import {theme} from "../../../theme/index.jsx";
+import {Navbar} from "./Navbar/Navbar.jsx";
 
 export const OrderPage = () => {
     const { username } = useParams()
     return <OrderPageStyled>
         <div className="container">
-            <div className="navbar">
-                navbar
-            </div>
+            <Navbar />
             {/*<h1>Bonjour {username}</h1>*/}
             {/*<br/>*/}
             {/*<Link to={"/"}>*/}
@@ -25,13 +25,8 @@ const OrderPageStyled = styled.div`
     align-items: center;
     
     .container {
-        background: red;
+        background: ${theme.colors.background_white};
         height: 95vh;
         width: 1400px;
-        
-        .navbar {
-            height: 10vh;
-            background: blue;
-        }
     }
 `
