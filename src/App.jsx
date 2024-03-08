@@ -1,8 +1,8 @@
 import './App.css'
-import {LoginPage} from "./component/pages/LOGIN/LoginPage.jsx";
+import {LoginPage} from "./components/pages/login/LoginPage.jsx";
 import {Route, Routes} from "react-router-dom";
-import {OrderPage} from "./component/pages/ORDER/OrderPage.jsx";
-import {ErrorPage} from "./component/pages/ERROR/ErrorPage.jsx";
+import {OrderPage} from "./components/pages/order/OrderPage.jsx";
+import {ErrorPage} from "./components/pages/error/ErrorPage.jsx";
 
 function App() {
 
