@@ -51,6 +51,7 @@ const fonts = {
   },
   family: {
     stylish: "Amatic SC, cursive",
+    globalText: "Open Sans, sans-serif"
   }
 }
 const gridUnit = 8
