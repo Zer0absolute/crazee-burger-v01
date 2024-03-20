@@ -10,7 +10,5 @@ export const MainRightSide = () => {
 }
 
 const MainRightSideStyled = styled.div`
-    background: red;
     overflow-y: scroll;
-    
 `
