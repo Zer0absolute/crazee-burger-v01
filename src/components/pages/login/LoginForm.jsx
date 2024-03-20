@@ -42,7 +42,6 @@ export const LoginForm = () => {
 }
 
 const LoginFormStyled = styled.form`
-    //background: red;
     width: 400px;
     
     h1, h2 {
