@@ -4,7 +4,7 @@ import styled from "styled-components";
 import {TextInput} from "../../reusable-ui/TextInput.jsx";
 import { BsPersonCircle } from "react-icons/bs";
 import { IoIosArrowForward } from "react-icons/io";
-import {PrimaryButton} from "../../reusable-ui/PrimaryButton.jsx";
+import {Button} from "../../reusable-ui/Button.jsx";
 import {theme} from "../../../theme/index.jsx";
 
 export const LoginForm = () => {
@@ -33,7 +33,7 @@ export const LoginForm = () => {
                     placeholder='Entrez votre prénom'
                     required
                 />
-                <PrimaryButton
+                <Button
                     label={'Accéder à mon espace'}
                     Icon={<IoIosArrowForward />}
                 />

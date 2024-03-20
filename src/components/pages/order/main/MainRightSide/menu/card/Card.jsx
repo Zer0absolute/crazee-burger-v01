@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {formatPrice} from "../../../../../../../utils/maths.js";
 import {theme} from "../../../../../../../theme/index.jsx";
-import {PrimaryButton} from "../../../../../../reusable-ui/PrimaryButton.jsx";
+import {Button} from "../../../../../../reusable-ui/Button.jsx";
 
 export const Card = ({imageSource, title, price}) => {
     return (
@@ -16,7 +16,7 @@ export const Card = ({imageSource, title, price}) => {
                 <div className="left-description">
                     <p>{formatPrice(price)}</p>
                     <div className="right-description">
-                        <PrimaryButton label={"Ajouter"} />
+                        <Button label={"Ajouter"} />
                     </div>
                 </div>
             </div>
@@ -77,6 +77,7 @@ const CardStyled = styled.div`
             grid-template-columns: 1fr 1fr;
             align-items: center;
             margin-left: 5px;
+            margin-top: -5px;
             
             p {
                 font-size: 16px;

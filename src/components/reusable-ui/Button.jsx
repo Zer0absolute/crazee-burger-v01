@@ -1,16 +1,16 @@
 import styled from "styled-components";
 import {theme} from "../../theme/index.jsx";
 
-export const PrimaryButton = ({label, Icon}) => {
-    return <PrimaryButtonStyled>
+export const Button = ({label, Icon}) => {
+    return <ButtonStyled>
         <span>{label}</span>
         <div className='icon'>
             {Icon && Icon}
         </div>
-    </PrimaryButtonStyled>
+    </ButtonStyled>
 }
 
-const PrimaryButtonStyled = styled.button`
+const ButtonStyled = styled.button`
     height: 55px;
     border: transparent;
     border-radius: ${theme.borderRadius.round};
