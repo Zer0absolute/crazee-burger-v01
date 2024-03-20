@@ -33,7 +33,7 @@ const CardStyled = styled.div`
     align-items: center;
     justify-content: center;
     grid-template-rows: 65% 1fr;
-    box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
+    box-shadow: ${theme.shadows.medium};
     border-radius: ${theme.borderRadius.extraRound};
 
     .image {
@@ -53,7 +53,7 @@ const CardStyled = styled.div`
         height: 110px;
 
         .title {
-            font-family: Amatic SC,cursive;
+            font-family: ${theme.fonts.family.stylish};
             font-weight: ${theme.fonts.weights.bold};
             padding: 0 5px 5px 5px;
             white-space: nowrap;
@@ -67,7 +67,7 @@ const CardStyled = styled.div`
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
-                font-size: 36px;
+                font-size: ${theme.fonts.size.P4};
                 color: ${theme.colors.background_dark};
             }
         }
@@ -80,8 +80,8 @@ const CardStyled = styled.div`
             margin-top: -5px;
             
             p {
-                font-size: 16px;
-                font-family: "Open Sans", sans-serif;
+                font-size: ${theme.fonts.size.P0};
+                font-family: ${theme.fonts.family.globalText};
                 color: ${theme.colors.primary};
             }
 
