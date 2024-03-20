@@ -31,5 +31,5 @@ const MenuStyled = styled.div`
     justify-items: center;
     padding: 50px 50px 150px;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
+    box-shadow: ${theme.shadows.strong};
 `
