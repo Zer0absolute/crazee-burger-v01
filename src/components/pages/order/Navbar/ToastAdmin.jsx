@@ -5,9 +5,9 @@ import styled from "styled-components"
 
 export default function ToastAdmin() {
   return (
-    <ToastAdmin>
+    <ToastAdminStyled>
       <ToastContainer className="toaster" bodyClassName="body-toast" />
-    </ToastAdmin>
+    </ToastAdminStyled>
   )
 }
 
