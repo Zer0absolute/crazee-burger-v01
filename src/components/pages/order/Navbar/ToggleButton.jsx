@@ -1,5 +1,5 @@
-import styled from "styled-components/macro"
-import { theme } from "../../theme"
+import styled from "styled-components"
+import {theme} from "../../../../theme/index.jsx";
 
 export default function ToggleButton({
   isChecked,

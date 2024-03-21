@@ -3,15 +3,15 @@ import { theme } from "../../../../theme"
 import { ToastContainer } from "react-toastify"
 import styled from "styled-components"
 
-export default function NavbarRightSide() {
+export default function ToastAdmin() {
   return (
-    <NavbarRightSideStyled>
+    <ToastAdmin>
       <ToastContainer className="toaster" bodyClassName="body-toast" />
-    </NavbarRightSideStyled>
+    </ToastAdmin>
   )
 }
 
-const NavbarRightSideStyled = styled.div`
+const ToastAdminStyled = styled.div`
   .toaster {
     max-width: 300px;
   }
