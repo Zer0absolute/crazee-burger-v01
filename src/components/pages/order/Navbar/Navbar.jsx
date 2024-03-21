@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import {theme} from "../../../../theme/index.jsx";
 import {Logo} from "../../../reusable-ui/Logo.jsx";
-import {Profile} from "./Profile.jsx";
 import {refreshPage} from "../../../../utils/windows.js";
+import {NavbarRightSide} from "./NavbarRightSide.jsx";
 
 export const Navbar = () => {
     return (
         <NavbarStyled className="navbar">
             <Logo onClick={() => refreshPage()}/>
-            <Profile />
+            <NavbarRightSide />
         </NavbarStyled>
     )
 }

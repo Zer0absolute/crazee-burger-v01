@@ -28,7 +28,7 @@ const ButtonStyled = styled.button`
     &:hover {
         background: ${theme.colors.white};
         color: ${theme.colors.primary};
-        transition: background 0.4s ease;
+        transition: background 0.3s ease;
         border: 1px solid ${theme.colors.primary};
     }
 
