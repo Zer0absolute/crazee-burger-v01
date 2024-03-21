@@ -1,17 +1,17 @@
 import styled from "styled-components";
 import {Profile} from "./Profile.jsx";
-import ToggleButton from "./ToggleButton.jsx";
 import {useState} from "react";
 import ToastAdmin from "./ToastAdmin.jsx";
 import { toast } from "react-toastify";
+import ToggleButton from "../../../reusable-ui/ToggleButton.jsx";
 
 export const NavbarRightSide = () => {
+    // eslint-disable-next-line no-unused-vars
     const [isModeAdmin, setIsModeAdmin] = useState(false);
 
     const displayToastNotification = () => {
         if (!isModeAdmin) {
             toast.info("Mode admin activé", {
-                // icon: <FaUserSecret size={30} />,
                 theme: "dark",
                 position: "bottom-right",
                 autoClose: 5000,
@@ -22,7 +22,9 @@ export const NavbarRightSide = () => {
                 progress: undefined,
             })
         }
+        setIsModeAdmin(!isModeAdmin)
     }
+    
     return (
         <NavbarRightSideStyled>
             <div className={"admin-buttom"}>
