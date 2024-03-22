@@ -11,6 +11,7 @@ export default function Tab({Icon, label}) {
 }
 
 const TabStyled = styled.button`
+    height: 43px;
     padding: 0 22px;
     margin-right: 1px;
 

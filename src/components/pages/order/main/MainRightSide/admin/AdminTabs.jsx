@@ -3,6 +3,7 @@ import Tab from "./Tab";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { AiOutlinePlus } from "react-icons/ai";
 import { MdModeEditOutline } from "react-icons/md";
+import { theme } from "../../../../../../theme";
 
 export default function AdminTabs() {
     return (
@@ -23,8 +24,12 @@ export default function AdminTabs() {
 }
 
 const AdminTabsStyled = styled.div`
-    height: 43px;
-
     display: flex;
     margin-left: 70px;
+
+    .is-active {
+        background: ${theme.colors.background_dark};
+        border-color: ${theme.colors.background_dark};
+        color: ${theme.colors.white};
+    }
 `;
