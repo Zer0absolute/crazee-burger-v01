@@ -1,23 +1,30 @@
 import styled from "styled-components";
 import Tab from "./Tab";
+import { FiChevronDown, FiChevronUp } from "react-icons/fi";
+import { AiOutlinePlus } from "react-icons/ai";
+import { MdModeEditOutline } from "react-icons/md";
 
 export default function AdminTabs() {
     return (
         <AdminTabsStyled>
             <Tab
-                label={"tab"}
+                Icon={<FiChevronDown />}
             />
             <Tab
-                label={"tab1"}
+                label={"Ajouter un produit"}
+                Icon={<AiOutlinePlus/>}
             />
             <Tab
-                label={"tab1"}
+                label={"Modifier un produit"}
+                Icon={<MdModeEditOutline />}
             />
         </AdminTabsStyled>
     )
 }
 
 const AdminTabsStyled = styled.div`
-    background-color: blue;
     height: 43px;
+
+    display: flex;
+    margin-left: 70px;
 `;
