@@ -9,5 +9,6 @@ export default function AdminPanel() {
 }
 
 const AdminPanelStyled = styled.div`
-
+    background: yellow;
+    height: 240px;
 `;
