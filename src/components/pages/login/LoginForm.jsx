@@ -16,7 +16,7 @@ export const LoginForm = () => {
         navigate(`order/${inputValue}`)
     }
     const handleChange = (event) => {
-      setInputValue(event.target.value)
+        setInputValue(event.target.value)
     }
 
     return <LoginFormStyled action={'submit'} onSubmit={handleSubmit}>

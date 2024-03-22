@@ -1,9 +1,18 @@
 import styled from "styled-components";
+import Tab from "./Tab";
 
 export default function AdminTabs() {
     return (
         <AdminTabsStyled>
-            AdminTabs
+            <Tab
+                label={"tab"}
+            />
+            <Tab
+                label={"tab1"}
+            />
+            <Tab
+                label={"tab1"}
+            />
         </AdminTabsStyled>
     )
 }
