@@ -1,9 +1,9 @@
 import styled from "styled-components";
-
+import AdminPanel from "./AdminPanel.jsx";
 export default function Admin() {
     return (
         <AdminStyled>
-            Admin
+            <AdminPanel />
         </AdminStyled>
     )
 }
