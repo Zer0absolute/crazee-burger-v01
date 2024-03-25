@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import AdminPanel from "./AdminPanel.jsx";
 import AdminTabs from "./AdminTabs.jsx";
+import AdminPanel from "./AdminPanel/AdminPanel.jsx";
 
 export default function Admin() {
     return (
