@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import {Profile} from "./Profile.jsx";
-import {useState} from "react";
+import {useContext} from "react";
 import ToastAdmin from "./ToastAdmin.jsx";
 import { toast } from "react-toastify";
 import ToggleButton from "../../../reusable-ui/ToggleButton.jsx";
+import OrderContext from "../../../../context/OrderContext.jsx";
 
 export const NavbarRightSide = () => {
     // eslint-disable-next-line no-unused-vars
-    const [isModeAdmin, setIsModeAdmin] = useState(false);
+    const { isModeAdmin, setIsModeAdmin } = useContext(OrderContext)
 
     const displayToastNotification = () => {
         if (!isModeAdmin) {
@@ -29,6 +30,7 @@ export const NavbarRightSide = () => {
         <NavbarRightSideStyled>
             <div className={"admin-buttom"}>
                 <ToggleButton
+                    isChecked={isModeAdmin}
                     labelIfChecked={"DÉSACTIVER LE MODE ADMIN"}
                     labelIfUnchecked={"ACTIVER LE MODE ADMIN"}
                     onToggle={displayToastNotification}
