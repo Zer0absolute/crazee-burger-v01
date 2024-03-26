@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { theme } from "../../../../../../theme";
 
-export default function Tab({Icon, label}) {
+export default function Tab({Icon, label, onClick, className}) {
     return (
-        <TabStyled>
+        <TabStyled onClick={onClick} className={className}>
             <div className="icon">{Icon && Icon}</div>
             {label && <span className="label">{label}</span>}
         </TabStyled>
@@ -18,7 +18,11 @@ const TabStyled = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-
+    position: relative;
+    left: 5%;
+    
+    cursor: pointer;
+    
     border-top-left-radius: ${theme.borderRadius.round};
     border-top-right-radius: ${theme.borderRadius.round};
     border-width: 1px 1px 2px 1px;
@@ -41,5 +45,6 @@ const TabStyled = styled.button`
 
     .icon {
         color: ${theme.colors.greySemiDark};
+        display: flex;
     }
 `;
