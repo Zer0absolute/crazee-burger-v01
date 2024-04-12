@@ -4,11 +4,34 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { AiOutlinePlus } from "react-icons/ai";
 import { MdModeEditOutline } from "react-icons/md";
 import { theme } from "../../../../../../theme";
+import { useContext } from "react";
+import OrderContext from "../../../../../../context/OrderContext";
 
-export default function AdminTabs({ isCollapsed, setIsCollapsed }) {
+export default function AdminTabs() {
+    const {
+        isCollapsed, 
+        setIsCollapsed, 
+        isAddTabSelected, 
+        setIsAddTabSelected, 
+        isEditTabSelected, 
+        setIsEditTabSelected
+    } = useContext(OrderContext)
     
+
     const handleClick = () => {
         setIsCollapsed(!isCollapsed)
+    }
+
+    const selectAddTab = () => {
+        setIsCollapsed(false)
+        setIsAddTabSelected(true)
+        setIsEditTabSelected(false)
+    }
+
+    const selectEditTab = () => {
+        setIsCollapsed(false)
+        setIsEditTabSelected(true)
+        setIsAddTabSelected(false)
     }
 
     return (
@@ -21,10 +44,14 @@ export default function AdminTabs({ isCollapsed, setIsCollapsed }) {
             <Tab
                 label={"Ajouter un produit"}
                 Icon={<AiOutlinePlus/>}
+                onClick={selectAddTab}
+                className={isAddTabSelected ? "is-active" : ""}
             />
             <Tab
                 label={"Modifier un produit"}
                 Icon={<MdModeEditOutline />}
+                onClick={selectEditTab}
+                className={isEditTabSelected ? "is-active" : ""}
             />
         </AdminTabsStyled>
     )
@@ -36,7 +63,11 @@ const AdminTabsStyled = styled.div`
     .is-active {
         background: ${theme.colors.background_dark};
         border-color: ${theme.colors.background_dark};
-        color: ${theme.colors.white};
+
+        .label {
+            color: ${theme.colors.white};
+        }
+        
         .icon {
             color: ${theme.colors.white};
         }
