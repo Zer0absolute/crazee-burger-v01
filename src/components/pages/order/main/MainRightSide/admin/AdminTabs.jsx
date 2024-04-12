@@ -36,25 +36,37 @@ export default function AdminTabs() {
         }
     }
 
+    const tabsConfig = [
+        {
+            label: "",
+            Icon: isCollapsed ? <FiChevronUp /> : <FiChevronDown />,
+            onClick: handleClick,
+            className: isCollapsed ? "is-active" : "",
+        },
+        {
+            label: "Ajouter un produit",
+            Icon: <AiOutlinePlus/>,
+            onClick: () => selectTab("add"),
+            className: isAddTabSelected ? "is-active" : "",
+        },
+        {
+            label: "Modifier un produit",
+            Icon: <MdModeEditOutline />,
+            onClick: () => selectTab("edit"),
+            className: isEditTabSelected ? "is-active" : "",
+        }
+    ]
+
     return (
         <AdminTabsStyled>
-            <Tab 
-                Icon={isCollapsed ? <FiChevronUp /> : <FiChevronDown />} 
-                onClick={handleClick}
-                className={isCollapsed ? "is-active" : ""}
-            />
-            <Tab
-                label={"Ajouter un produit"}
-                Icon={<AiOutlinePlus/>}
-                onClick={() => selectTab("add")}
-                className={isAddTabSelected ? "is-active" : ""}
-            />
-            <Tab
-                label={"Modifier un produit"}
-                Icon={<MdModeEditOutline />}
-                onClick={() => selectTab("edit")}
-                className={isEditTabSelected ? "is-active" : ""}
-            />
+            {tabsConfig.map((tab) => { 
+                return <Tab 
+                label={tab.label} 
+                Icon={tab.Icon}
+                onClick={tab.onClick}
+                className={tab.className}
+                />
+            })}
         </AdminTabsStyled>
     )
 }
