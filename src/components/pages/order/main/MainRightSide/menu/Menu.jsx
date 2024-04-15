@@ -26,6 +26,7 @@ export const Menu = () => {
 
 const MenuStyled = styled.div`
     display: grid;
+    overflow-y: scroll;
     background: ${theme.colors.background_white};
     grid-row-gap: 60px;
     justify-items: center;

@@ -18,6 +18,7 @@ const NavbarStyled = styled.div`
     justify-content: space-between;
     height: 10vh;
     background: ${theme.colors.white};
+    border-bottom: 1px solid ${theme.colors.greyLight};
     border-radius: 15px 15px 0 0;
     padding-left: 20px;
     font-family: "Open Sans", sans-serif;
