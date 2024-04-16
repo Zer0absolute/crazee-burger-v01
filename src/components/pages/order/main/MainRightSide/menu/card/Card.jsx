@@ -4,13 +4,13 @@ import {theme} from "../../../../../../../theme/index.jsx";
 import {Button} from "../../../../../../reusable-ui/Button.jsx";
 import { TiDelete } from "react-icons/ti";
 
-export const Card = ({imageSource, title, price}) => {
+export const Card = ({imageSource, title, price, hasDeleteButton, onDelete}) => {
     return (
         <CardStyled>
             <div className="delete-button">
-                <button aria-label="delete-button">
+                {hasDeleteButton && <button aria-label="delete-button" onClick={onDelete}>
                     <TiDelete />
-                </button>
+                </button>}
             </div>
             <div className="image">
                 <img src={imageSource} alt={title}/>

@@ -1,12 +1,20 @@
 import styled from "styled-components";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import {fakeMenu} from "../../../../../../fakeData/fakeMenu.js";
 import {Card} from "./card/Card.jsx";
 import {theme} from "../../../../../../theme/index.jsx";
+import OrderContext from "../../../../../../context/OrderContext.jsx";
 
 export const Menu = () => {
 
     const [menu, setMenu] = useState(fakeMenu.LARGE);
+    const { isModeAdmin } = useContext(OrderContext)
+
+    const handleDelete = (productId) => {
+        const menuCopy = [...menu]
+        const menuUpdated = menuCopy.filter((product) => product.id !== productId)
+        setMenu(menuUpdated)
+    }
 
     return (
         <MenuStyled>
@@ -17,6 +25,8 @@ export const Menu = () => {
                         imageSource={imageSource}
                         title={title}
                         price={price}
+                        hasDeleteButton={isModeAdmin}
+                        onDelete={() => handleDelete(id)}
                     />
                 )
             })}
