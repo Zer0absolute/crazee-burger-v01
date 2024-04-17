@@ -14,7 +14,7 @@ export default function AdminPanel() {
 
     return (
         <AdminPanelStyled>
-            {tabSelected && tabSelected.label}
+            {tabSelected && tabSelected.content}
         </AdminPanelStyled>
     )
 }
