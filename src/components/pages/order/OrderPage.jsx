@@ -4,11 +4,14 @@ import {Navbar} from "./Navbar/Navbar.jsx";
 import {Main} from "./main/Main.jsx";
 import { useState } from "react";
 import OrderContext from "../../../context/OrderContext.jsx"
+import { fakeMenu } from "../../../fakeData/fakeMenu.js";
 
 export const OrderPage = () => {
     const [isModeAdmin, setIsModeAdmin] = useState(false);
     const [isCollapsed, setIsCollapsed] = useState(false)
     const [currentTabSelected, setCurrentTabSelected] = useState("add")
+    const [menu, setMenu] = useState(fakeMenu.LARGE);
+
 
     const orderContextValue = {
         isModeAdmin,
@@ -17,6 +20,8 @@ export const OrderPage = () => {
         setIsCollapsed,
         currentTabSelected,
         setCurrentTabSelected,
+        menu,
+        setMenu
     }
 
     return (

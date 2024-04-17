@@ -1,16 +1,18 @@
 import styled from "styled-components";
-import {useContext, useState} from "react";
-import {fakeMenu} from "../../../../../../fakeData/fakeMenu.js";
+import {useContext} from "react";
 import {Card} from "./card/Card.jsx";
 import {theme} from "../../../../../../theme/index.jsx";
 import OrderContext from "../../../../../../context/OrderContext.jsx";
 import EmptyMenuClient from "./EmptyMenuClient.jsx";
 import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx";
+import { fakeMenu } from "../../../../../../fakeData/fakeMenu.js";
 
 export const Menu = () => {
-
-    const [menu, setMenu] = useState(fakeMenu.LARGE);
-    const { isModeAdmin } = useContext(OrderContext)
+    const { 
+        menu, 
+        setMenu, 
+        isModeAdmin,
+    } = useContext(OrderContext)
 
     const handleDelete = (productId) => {
         const menuCopy = [...menu]
@@ -18,9 +20,13 @@ export const Menu = () => {
         setMenu(menuUpdated)
     }
 
+    const resetMenu = () => {
+        setMenu(fakeMenu.LARGE)
+    }
+
     if(menu.length === 0) {
         if(!isModeAdmin) return <EmptyMenuClient />
-        return isModeAdmin && <EmptyMenuAdmin/>
+        return isModeAdmin && <EmptyMenuAdmin onReset={() => resetMenu()}/>
     }
 
     return (

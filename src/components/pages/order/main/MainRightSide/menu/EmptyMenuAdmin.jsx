@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { theme } from "../../../../../../theme";
 import { Button } from "../../../../../reusable-ui/Button";
 
-export default function EmptyMenuAdmin() {
+export default function EmptyMenuAdmin({ onReset }) {
 
     return (
         <EmptyMenuAdminStyled>
@@ -11,6 +11,7 @@ export default function EmptyMenuAdmin() {
             <div className="button-reset">
                 <Button
                     label={"Générer de nouveaux produits"}
+                    onClick={onReset}
                 />
             </div>
         </EmptyMenuAdminStyled>
