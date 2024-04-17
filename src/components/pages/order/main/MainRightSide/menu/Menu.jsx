@@ -4,6 +4,8 @@ import {fakeMenu} from "../../../../../../fakeData/fakeMenu.js";
 import {Card} from "./card/Card.jsx";
 import {theme} from "../../../../../../theme/index.jsx";
 import OrderContext from "../../../../../../context/OrderContext.jsx";
+import EmptyMenuClient from "./EmptyMenuClient.jsx";
+import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx";
 
 export const Menu = () => {
 
@@ -14,6 +16,11 @@ export const Menu = () => {
         const menuCopy = [...menu]
         const menuUpdated = menuCopy.filter((product) => product.id !== productId)
         setMenu(menuUpdated)
+    }
+
+    if(menu.length === 0) {
+        if(!isModeAdmin) return <EmptyMenuClient />
+        return isModeAdmin && <EmptyMenuAdmin/>
     }
 
     return (
