@@ -22,7 +22,10 @@ export const Card = ({imageSource, title, price, hasDeleteButton, onDelete}) => 
                 <div className="left-description">
                     <p>{formatPrice(price)}</p>
                     <div className="right-description">
-                        <Button label={"Ajouter"} />
+                        <Button 
+                            label={"Ajouter"}
+                            version={"normal"}
+                        />
                     </div>
                 </div>
             </div>

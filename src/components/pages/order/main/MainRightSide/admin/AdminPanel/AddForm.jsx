@@ -3,36 +3,44 @@ import { FaHamburger } from "react-icons/fa";
 import { MdOutlineEuro } from "react-icons/md";
 import styled from "styled-components";
 import { theme } from "../../../../../../../theme";
+import { Button } from "../../../../../../reusable-ui/Button";
+import { TextInput } from "../../../../../../reusable-ui/TextInput";
 
 export default function AddForm() {
     return (
         <AddFormStyled>
             <div className="image-preview">
-                {/* <img src={"../../../../../../../../public/images/burger1.png"} alt="" /> */}
-                <div className="empty-image">
+                <img src={"/images/burger1.png"} alt="" />
+                {/* <div className="empty-image">
                     <p>aucune image</p>
-                </div>
+                </div> */}
             </div>
             <div className="input-name">
-                <div className="icon">
-                    <FaHamburger />
-                </div>
-                <input type="text" placeholder="Nom du produit (ex: Super Burger)" />
+                <TextInput 
+                    version={"minimalist"}
+                    Icon={<FaHamburger />}
+                    placeholder="Nom du produit (ex: Super Burger)"
+                />
             </div>
             <div className="input-link">
-                <div className="icon">
-                    <BsFillCameraFill />
-                </div>
-                <input type="text" placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)" />
+                <TextInput 
+                    version={"minimalist"}
+                    Icon={<BsFillCameraFill />}
+                    placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
+                />
             </div>
             <div className="input-price">
-                <div className="icon">
-                    <MdOutlineEuro />
-                </div>
-                <input type="text" placeholder="Prix" />
+                <TextInput 
+                    version={"minimalist"}
+                    Icon={<MdOutlineEuro />}
+                    placeholder="Prix"
+                />
             </div>
-            <div className="input-button">
-                <button>Ajouter un nouveau produit au menu</button>
+            <div className="succes-button">
+                <Button
+                    label={"Ajouter un nouveau produit au menu"}
+                    version={"success"}
+                />
             </div>
         </AddFormStyled>
     )
@@ -74,108 +82,17 @@ const AddFormStyled = styled.form`
 
     .input-name { 
         grid-area: 1 / 2 / -4 / 3;
-        height: 35px;
-
-        .icon {
-                display: flex;
-                position: absolute;
-                height: 15px;
-                width: 15px;
-                margin: 10px 13px 10px 24px;
-                color: ${theme.colors.greyBlue}
-            }
-        
-        input {
-            height: 35px;
-            width: 100%;
-            padding-left: 50px;
-            border-radius: 5px;
-            border: none;
-            background: ${theme.colors.background_white};
-            font-family: ${theme.fonts.family.globalText};
-
-            &::placeholder {
-                color: ${theme.colors.greyMedium};
-            }
-
-            &:focus-visible {
-                outline: none;
-            }
-        }
     }
 
     .input-link { 
         grid-area: 2 / 2 / -3 / 3;
-        
-        .icon {
-                display: flex;
-                position: absolute;
-                height: 15px;
-                width: 15px;
-                margin: 10px 13px 10px 24px;
-                color: ${theme.colors.greyBlue}
-            }
-        
-        input {
-            height: 35px;
-            width: 100%;
-            padding-left: 50px;
-            border-radius: 5px;
-            border: none;
-            background: ${theme.colors.background_white};
-            font-family: ${theme.fonts.family.globalText};
-            
-            &::placeholder {
-                color: ${theme.colors.greyMedium};
-            }
-
-            &:focus-visible {
-                outline: none;
-            }
-        }
     }
 
     .input-price { 
         grid-area: 3 / 2 / -2 / 3; 
-
-        .icon {
-                display: flex;
-                position: absolute;
-                height: 15px;
-                width: 15px;
-                margin: 10px 13px 10px 24px;
-                color: ${theme.colors.greyBlue}
-            }
-        
-        input {
-            height: 35px;
-            width: 100%;
-            padding-left: 50px;
-            border-radius: 5px;
-            border: none;
-            background: ${theme.colors.background_white};
-            font-family: ${theme.fonts.family.globalText};
-            
-            &::placeholder {
-                color: ${theme.colors.greyMedium};
-            }
-
-            &:focus-visible {
-                outline: none;
-            }
-        }
     }
 
-    .input-button { 
+    .succes-button { 
         grid-area: 4 / -2 / -1 / -1;
-
-        button {
-            width: 50%;
-            height: 35px;
-            background: ${theme.colors.success};
-            color: ${theme.colors.white};
-            border-radius: 5px;
-            border: none;
-        }
     }
 `;
