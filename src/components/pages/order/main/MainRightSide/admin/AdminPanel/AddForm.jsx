@@ -1,40 +1,37 @@
-import { BsFillCameraFill } from "react-icons/bs";
-import { FaHamburger } from "react-icons/fa";
-import { MdOutlineEuro } from "react-icons/md";
 import styled from "styled-components";
 import { theme } from "../../../../../../../theme";
 import { Button } from "../../../../../../reusable-ui/Button";
 import { TextInput } from "../../../../../../reusable-ui/TextInput";
+import { getInputTextsConfig } from "./inputTextConfig";
+import { useState } from "react";
+import ImagePreview from './ImagePreview';
+
+const EMPTY_PRODUCT = {
+    id: "",
+    title: "",
+    imageSource: "",
+    price: 0
+}
 
 export default function AddForm() {
+    const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+
+    const handleChange = (event) => { 
+        setNewProduct({...newProduct, [event.target.name]:event.target.value})
+    }
+    
+    const inputTexts = getInputTextsConfig(newProduct)
+    
     return (
         <AddFormStyled>
-            <div className="image-preview">
-                <img src={"/images/burger1.png"} alt="" />
-                {/* <div className="empty-image">
-                    <p>aucune image</p>
-                </div> */}
-            </div>
-            <div className="input-name">
-                <TextInput 
-                    version={"minimalist"}
-                    Icon={<FaHamburger />}
-                    placeholder="Nom du produit (ex: Super Burger)"
-                />
-            </div>
-            <div className="input-link">
-                <TextInput 
-                    version={"minimalist"}
-                    Icon={<BsFillCameraFill />}
-                    placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
-                />
-            </div>
-            <div className="input-price">
-                <TextInput 
-                    version={"minimalist"}
-                    Icon={<MdOutlineEuro />}
-                    placeholder="Prix"
-                />
+            <ImagePreview imageSource={newProduct.imageSource} title={newProduct.title} />
+            <div className="input-fields">
+                {inputTexts.map((input) => <TextInput 
+                    key={input.id}
+                    onChange={handleChange}
+                    {...input}
+                    />
+                )}
             </div>
             <div className="succes-button">
                 <Button
@@ -55,41 +52,10 @@ const AddFormStyled = styled.form`
     height: 100%;
     width: 70%;
 
-    .image-preview { 
-        grid-area: 1 / 1 / 4 / 2;
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center;
-        }
-
-        .empty-image {
-            display: flex;
-            line-height: 1.5;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            border: 1px solid ${theme.colors.greyLight};
-            border-radius: ${theme.borderRadius.round};
-            color: ${theme.colors.greySemiDark};
-            font-size: ${theme.fonts.size.P0};
-            font-family: ${theme.fonts.family.globalText};
-        }
-    }
-
-    .input-name { 
+    .input-fields { 
         grid-area: 1 / 2 / -4 / 3;
-    }
-
-    .input-link { 
-        grid-area: 2 / 2 / -3 / 3;
-    }
-
-    .input-price { 
-        grid-area: 3 / 2 / -2 / 3; 
+        display: grid;
+        grid-row-gap: 8px;
     }
 
     .succes-button { 

@@ -12,6 +12,7 @@ export default function EmptyMenuAdmin({ onReset }) {
                 <Button
                     label={"Générer de nouveaux produits"}
                     onClick={onReset}
+                    version={"normal"}
                 />
             </div>
         </EmptyMenuAdminStyled>
