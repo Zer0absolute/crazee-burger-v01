@@ -68,7 +68,7 @@ const extraStyleSuccess = css`
         border: 1px solid ${theme.colors.success};
 
         &:active {
-            background-color: ${theme.colors.success};
+            background: ${theme.colors.success};
             color: ${theme.colors.white};
         }
     }

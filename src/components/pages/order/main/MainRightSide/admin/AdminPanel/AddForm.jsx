@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { theme } from "../../../../../../../theme";
 import { Button } from "../../../../../../reusable-ui/Button";
 import { TextInput } from "../../../../../../reusable-ui/TextInput";
 import { getInputTextsConfig } from "./inputTextConfig";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ImagePreview from './ImagePreview';
+import OrderContext from "../../../../../../../context/OrderContext";
 
 const EMPTY_PRODUCT = {
     id: "",
@@ -15,6 +15,23 @@ const EMPTY_PRODUCT = {
 
 export default function AddForm() {
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+    const { menu, setMenu } = useContext(OrderContext)
+
+    const handleAdd = (newProduct) => { 
+        const menuCopy = [...menu]
+        const menuUpdate = [newProduct, ...menuCopy]
+        setMenu(menuUpdate)
+    }
+
+    const handleSubmit = (event) => { 
+        event.preventDefault()
+        const newProductToAdd = {
+            ...newProduct,
+            id: crypto.randomUUID(), 
+        }
+        handleAdd(newProductToAdd)
+        setNewProduct(EMPTY_PRODUCT)
+    }
 
     const handleChange = (event) => { 
         setNewProduct({...newProduct, [event.target.name]:event.target.value})
@@ -23,7 +40,7 @@ export default function AddForm() {
     const inputTexts = getInputTextsConfig(newProduct)
     
     return (
-        <AddFormStyled>
+        <AddFormStyled onSubmit={handleSubmit}>
             <ImagePreview imageSource={newProduct.imageSource} title={newProduct.title} />
             <div className="input-fields">
                 {inputTexts.map((input) => <TextInput 
