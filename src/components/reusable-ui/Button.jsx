@@ -41,18 +41,22 @@ const extraStyleNormal = css`
     
     
     &:hover {
-        color: ${theme.colors.primary};
+        span {
+            color: ${theme.colors.primary};
+        }
         border: 1px solid ${theme.colors.primary};
         
         &:active {
-            background-color: ${theme.colors.primary};
-            color: ${theme.colors.white};
+            background: ${theme.colors.primary};
+            span {
+                color: ${theme.colors.white};
+            }
         }
     }
     
 
     &:focus {
-        background-color: ${theme.colors.primary};
+        background: ${theme.colors.primary};
     }
 `
 
@@ -64,17 +68,21 @@ const extraStyleSuccess = css`
     font-size: ${theme.fonts.size.XS};
     
     &:hover {
-        color: ${theme.colors.success};
+        span {
+            color: ${theme.colors.success};
+        }
         border: 1px solid ${theme.colors.success};
 
         &:active {
             background: ${theme.colors.success};
-            color: ${theme.colors.white};
+            span {
+                color: ${theme.colors.white};
+            }
         }
     }
 
     &:focus {
-        background-color: ${theme.colors.success};
+        background: ${theme.colors.success};
     }
 `
 
