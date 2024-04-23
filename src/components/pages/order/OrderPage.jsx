@@ -5,13 +5,30 @@ import {Main} from "./main/Main.jsx";
 import { useState } from "react";
 import OrderContext from "../../../context/OrderContext.jsx"
 import { fakeMenu } from "../../../fakeData/fakeMenu.js";
+import { EMPTY_PRODUCT } from "./main/MainRightSide/admin/AdminPanel/AddForm.jsx";
 
 export const OrderPage = () => {
     const [isModeAdmin, setIsModeAdmin] = useState(false);
     const [isCollapsed, setIsCollapsed] = useState(false)
     const [currentTabSelected, setCurrentTabSelected] = useState("add")
     const [menu, setMenu] = useState(fakeMenu.LARGE);
+    const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
 
+    const handleAdd = (newProduct) => { 
+        const menuCopy = [...menu]
+        const menuUpdate = [newProduct, ...menuCopy]
+        setMenu(menuUpdate)
+    }
+
+    const handleDelete = (productId) => {
+        const menuCopy = [...menu]
+        const menuUpdated = menuCopy.filter((product) => product.id !== productId)
+        setMenu(menuUpdated)
+    }
+
+    const resetMenu = () => {
+        setMenu(fakeMenu.LARGE)
+    }
 
     const orderContextValue = {
         isModeAdmin,
@@ -21,7 +38,12 @@ export const OrderPage = () => {
         currentTabSelected,
         setCurrentTabSelected,
         menu,
-        setMenu
+        setMenu,
+        handleDelete,
+        resetMenu,
+        handleAdd,
+        newProduct,
+        setNewProduct
     }
 
     return (

@@ -4,7 +4,6 @@ import {theme} from "../../../../../../theme/index.jsx";
 import OrderContext from "../../../../../../context/OrderContext.jsx";
 import EmptyMenuClient from "./EmptyMenuClient.jsx";
 import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx";
-import { fakeMenu } from "../../../../../../fakeData/fakeMenu.js";
 import { formatPrice } from "../../../../../../utils/maths.js";
 import { Card } from "../../../../../reusable-ui/Card.jsx";
 
@@ -13,19 +12,10 @@ const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 export const Menu = () => {
     const { 
         menu, 
-        setMenu, 
         isModeAdmin,
+        handleDelete,
+        resetMenu,
     } = useContext(OrderContext)
-
-    const handleDelete = (productId) => {
-        const menuCopy = [...menu]
-        const menuUpdated = menuCopy.filter((product) => product.id !== productId)
-        setMenu(menuUpdated)
-    }
-
-    const resetMenu = () => {
-        setMenu(fakeMenu.LARGE)
-    }
 
     if(menu.length === 0) {
         if(!isModeAdmin) return <EmptyMenuClient />

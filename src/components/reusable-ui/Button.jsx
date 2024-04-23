@@ -16,6 +16,7 @@ const ButtonStyled = styled.button`
     border-radius: ${theme.borderRadius.round};
     color: ${theme.colors.white};
     cursor: pointer;
+    font-family: ${theme.fonts.family.globalText};
 
     .icon {
         position: absolute;

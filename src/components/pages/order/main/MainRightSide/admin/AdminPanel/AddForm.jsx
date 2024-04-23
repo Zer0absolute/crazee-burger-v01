@@ -8,7 +8,7 @@ import OrderContext from "../../../../../../../context/OrderContext";
 import { theme } from "../../../../../../../theme";
 import { FiCheck } from "react-icons/fi";
 
-const EMPTY_PRODUCT = {
+export const EMPTY_PRODUCT = {
     id: "",
     title: "",
     imageSource: "",
@@ -16,15 +16,8 @@ const EMPTY_PRODUCT = {
 }
 
 export default function AddForm() {
-    const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
     const [isSubmitted, setIsSubmitted] = useState(false)
-    const { menu, setMenu } = useContext(OrderContext)
-
-    const handleAdd = (newProduct) => { 
-        const menuCopy = [...menu]
-        const menuUpdate = [newProduct, ...menuCopy]
-        setMenu(menuUpdate)
-    }
+    const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext)
 
     const handleSubmit = (event) => { 
         event.preventDefault()
