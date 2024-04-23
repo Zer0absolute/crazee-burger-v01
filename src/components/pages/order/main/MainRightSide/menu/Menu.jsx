@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import {useContext} from "react";
-import {Card} from "./card/Card.jsx";
 import {theme} from "../../../../../../theme/index.jsx";
 import OrderContext from "../../../../../../context/OrderContext.jsx";
 import EmptyMenuClient from "./EmptyMenuClient.jsx";
 import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx";
 import { fakeMenu } from "../../../../../../fakeData/fakeMenu.js";
 import { formatPrice } from "../../../../../../utils/maths.js";
+import { Card } from "../../../../../reusable-ui/Card.jsx";
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 

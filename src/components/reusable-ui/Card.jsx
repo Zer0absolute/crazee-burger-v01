@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import {formatPrice} from "../../../../../../../utils/maths.js";
-import {theme} from "../../../../../../../theme/index.jsx";
-import {Button} from "../../../../../../reusable-ui/Button.jsx";
+import {formatPrice} from "../../utils/maths.js";
+import {theme} from "../../theme/index.jsx";
+import {Button} from "./Button.jsx";
 import { TiDelete } from "react-icons/ti";
 
 export const Card = ({imageSource, title, price, hasDeleteButton, onDelete}) => {
