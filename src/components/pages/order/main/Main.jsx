@@ -21,6 +21,7 @@ const MainStyled = styled.main`
     box-shadow: ${theme.shadows.strong};
     
     overflow: hidden;
+    scrollbar-color: transparent transparent;
     display: grid;
     grid-template-columns: 1fr;
     /* This code will be use for Basket */
