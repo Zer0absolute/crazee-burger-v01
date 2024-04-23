@@ -6,6 +6,9 @@ import OrderContext from "../../../../../../context/OrderContext.jsx";
 import EmptyMenuClient from "./EmptyMenuClient.jsx";
 import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx";
 import { fakeMenu } from "../../../../../../fakeData/fakeMenu.js";
+import { formatPrice } from "../../../../../../utils/maths.js";
+
+const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export const Menu = () => {
     const { 
@@ -35,9 +38,9 @@ export const Menu = () => {
                 return (
                     <Card
                         key={id}
-                        imageSource={imageSource}
+                        imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
                         title={title}
-                        price={price}
+                        price={formatPrice(price)}
                         hasDeleteButton={isModeAdmin}
                         onDelete={() => handleDelete(id)}
                     />
