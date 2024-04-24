@@ -5,7 +5,7 @@ import {Main} from "./main/Main.jsx";
 import { useState } from "react";
 import OrderContext from "../../../context/OrderContext.jsx"
 import { fakeMenu } from "../../../fakeData/fakeMenu.js";
-import { EMPTY_PRODUCT } from "./main/MainRightSide/admin/AdminPanel/AddForm.jsx";
+import { EMPTY_PRODUCT } from "../../../enums/product.js";
 
 export const OrderPage = () => {
     const [isModeAdmin, setIsModeAdmin] = useState(false);
@@ -13,6 +13,7 @@ export const OrderPage = () => {
     const [currentTabSelected, setCurrentTabSelected] = useState("add")
     const [menu, setMenu] = useState(fakeMenu.LARGE);
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+    const [ productSelected, setProductSelected ] = useState(EMPTY_PRODUCT)
 
     const handleAdd = (newProduct) => { 
         const menuCopy = [...menu]
@@ -43,7 +44,9 @@ export const OrderPage = () => {
         resetMenu,
         handleAdd,
         newProduct,
-        setNewProduct
+        setNewProduct,
+        productSelected,
+        setProductSelected,
     }
 
     return (

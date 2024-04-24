@@ -4,9 +4,9 @@ import {theme} from "../../theme/index.jsx";
 import {Button} from "./Button.jsx";
 import { TiDelete } from "react-icons/ti";
 
-export const Card = ({imageSource, title, price, hasDeleteButton, onDelete}) => {
+export const Card = ({imageSource, title, price, hasDeleteButton, onDelete, onClick}) => {
     return (
-        <CardStyled>
+        <CardStyled onClick={onClick}>
             <div className="delete-button">
                 {hasDeleteButton && <button aria-label="delete-button" onClick={onDelete}>
                     <TiDelete />

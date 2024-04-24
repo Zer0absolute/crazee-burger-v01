@@ -7,13 +7,7 @@ import ImagePreview from './ImagePreview';
 import OrderContext from "../../../../../../../context/OrderContext";
 import { theme } from "../../../../../../../theme";
 import { FiCheck } from "react-icons/fi";
-
-export const EMPTY_PRODUCT = {
-    id: "",
-    title: "",
-    imageSource: "",
-    price: 0
-}
+import { EMPTY_PRODUCT } from "../../../../../../../enums/product";
 
 export default function AddForm() {
     const [isSubmitted, setIsSubmitted] = useState(false)
