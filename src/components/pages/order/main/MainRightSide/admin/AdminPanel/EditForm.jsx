@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import HintMessage from "./HintMessage";
 import OrderContext from "../../../../../../../context/OrderContext";
 import styled from "styled-components";
@@ -6,20 +6,21 @@ import ImagePreview from "./ImagePreview";
 import { TextInput } from "../../../../../../reusable-ui/TextInput";
 import { getInputTextsConfig } from "./inputTextConfig";
 import { theme } from "../../../../../../../theme";
-import { EMPTY_PRODUCT } from "../../../../../../../enums/product"
 
 export default function EditForm() {
-    const { productSelected  } = useContext(OrderContext)
-    const [productBeingEdited, setProductBeingEdited] = useState(EMPTY_PRODUCT)
-
+    const { productSelected, setProductSelected, handleEdit  } = useContext(OrderContext)
     const inputTexts = getInputTextsConfig(productSelected)
 
     const handleChange = (event) => {
         const { name, value } = event.target
-        setProductBeingEdited({
-            ...productBeingEdited,
+
+        const productBeingUpdated = {
+            ...productSelected,
             [name] : value,
-        })
+        }
+
+        setProductSelected(productBeingUpdated)
+        handleEdit(productBeingUpdated)
     }
 
     return (
@@ -33,10 +34,9 @@ export default function EditForm() {
                     />
                 )}
             </div>
-            <div className="submit">
+            {/* <div className="submit">
                 <HintMessage />
-                <span>{productSelected && productSelected.title}</span>
-            </div>
+            </div> */}
         </EditFormStyled>
     )
 }

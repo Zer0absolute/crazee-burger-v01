@@ -16,13 +16,20 @@ export const OrderPage = () => {
     const [ productSelected, setProductSelected ] = useState(EMPTY_PRODUCT)
 
     const handleAdd = (newProduct) => { 
-        const menuCopy = [...menu]
+        const menuCopy = JSON.parse(JSON.stringify(menu))
         const menuUpdate = [newProduct, ...menuCopy]
         setMenu(menuUpdate)
     }
 
+    const handleEdit = (productBeingEdited) => {
+        const menuCopy = JSON.parse(JSON.stringify(menu))
+        const indexOfProducToEdit = menu.findIndex((product) => product.id === productBeingEdited.id)
+        menuCopy[indexOfProducToEdit] = productBeingEdited
+        setMenu(menuCopy)
+    }
+
     const handleDelete = (productId) => {
-        const menuCopy = [...menu]
+        const menuCopy = JSON.parse(JSON.stringify(menu))
         const menuUpdated = menuCopy.filter((product) => product.id !== productId)
         setMenu(menuUpdated)
     }
@@ -47,6 +54,7 @@ export const OrderPage = () => {
         setNewProduct,
         productSelected,
         setProductSelected,
+        handleEdit,
     }
 
     return (
