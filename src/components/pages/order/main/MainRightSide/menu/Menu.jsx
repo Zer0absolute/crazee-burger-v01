@@ -6,6 +6,7 @@ import EmptyMenuClient from "./EmptyMenuClient.jsx";
 import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx";
 import { formatPrice } from "../../../../../../utils/maths.js";
 import { Card } from "../../../../../reusable-ui/Card.jsx";
+import { checkIfProductIsClicked } from "./helper.jsx";
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
@@ -15,6 +16,7 @@ export const Menu = () => {
         isModeAdmin,
         handleDelete,
         resetMenu,
+        productSelected,
         setProductSelected,
     } = useContext(OrderContext)
 
@@ -41,7 +43,7 @@ export const Menu = () => {
                         onDelete={() => handleDelete(id)}
                         onClick={() => handleClick(id)}
                         isHoverable={isModeAdmin}
-                        isSelected={true}
+                        isSelected={checkIfProductIsClicked(id, productSelected.id)}
                     />
                 )
             })}
