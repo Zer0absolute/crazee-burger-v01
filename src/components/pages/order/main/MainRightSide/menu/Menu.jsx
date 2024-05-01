@@ -18,14 +18,14 @@ export const Menu = () => {
         setProductSelected,
     } = useContext(OrderContext)
 
-    if(menu.length === 0) {
-        if(!isModeAdmin) return <EmptyMenuClient />
-        return isModeAdmin && <EmptyMenuAdmin onReset={() => resetMenu()}/>
-    }
-
     const handleClick = (idProductClicked) => {
         const productClickOn = menu.find((product) => product.id === idProductClicked)
         setProductSelected(productClickOn)
+    }
+
+    if(menu.length === 0) {
+        if(!isModeAdmin) return <EmptyMenuClient />
+        return isModeAdmin && <EmptyMenuAdmin onReset={() => resetMenu()}/>
     }
 
     return (
@@ -40,6 +40,7 @@ export const Menu = () => {
                         hasDeleteButton={isModeAdmin}
                         onDelete={() => handleDelete(id)}
                         onClick={() => handleClick(id)}
+                        isHoverable={isModeAdmin}
                     />
                 )
             })}
