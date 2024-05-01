@@ -41,6 +41,7 @@ export const Menu = () => {
                         onDelete={() => handleDelete(id)}
                         onClick={() => handleClick(id)}
                         isHoverable={isModeAdmin}
+                        isSelected={true}
                     />
                 )
             })}

@@ -4,10 +4,10 @@ import {theme} from "../../theme/index.jsx";
 import {Button} from "./Button.jsx";
 import { TiDelete } from "react-icons/ti";
 
-export const Card = ({imageSource, title, price, hasDeleteButton, onDelete, onClick, isHoverable}) => {
+export const Card = ({imageSource, title, price, hasDeleteButton, onDelete, onClick, isHoverable, isSelected}) => {
     return (
         <CardStyled onClick={onClick} isHoverable={isHoverable}>
-            <div className="card">
+            <div className="card" style={isSelected ? {background: "orange"} : {}}>
                 <div className="delete-button">
                     {hasDeleteButton && <button aria-label="delete-button" onClick={onDelete}>
                         <TiDelete />
