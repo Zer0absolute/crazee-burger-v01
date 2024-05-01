@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
 import {theme} from "../../theme/index.jsx";
 
-export const Button = ({label, Icon, onClick, version}) => {
-    return <ButtonStyled version={version} onClick={onClick}>
+export const Button = ({label, Icon, onClick, version, className}) => {
+    return <ButtonStyled className={className} version={version} onClick={onClick}>
         <span>{label}</span>
         <div className='icon'>
             {Icon && Icon}
