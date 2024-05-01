@@ -38,8 +38,11 @@ export const Card = ({imageSource, title, price, hasDeleteButton, onDelete, onCl
 const CardStyled = styled.div`
     ${(props) => props.isHoverable && hoverableStyle}
     border-radius: ${theme.borderRadius.extraRound};
+    border: 1px solid red;
+    height: 330px;
 
     .card {
+        box-sizing: border-box;
         width: 240px;
         display: grid;
         height: 330px;
