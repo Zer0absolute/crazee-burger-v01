@@ -24,8 +24,8 @@ export const Menu = () => {
     }
 
     const handleClick = (idProductClicked) => {
-        const productSelected = menu.find((product) => product.id === idProductClicked)
-        setProductSelected(productSelected)
+        const productClickOn = menu.find((product) => product.id === idProductClicked)
+        setProductSelected(productClickOn)
     }
 
     return (
