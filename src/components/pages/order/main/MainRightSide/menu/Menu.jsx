@@ -25,6 +25,11 @@ export const Menu = () => {
         setProductSelected(productClickOn)
     }
 
+    const handleCardDelete = (event, idProductToDelete) => {
+        event.stopPropagation()
+        handleDelete(idProductToDelete)
+    }
+
     if(menu.length === 0) {
         if(!isModeAdmin) return <EmptyMenuClient />
         return isModeAdmin && <EmptyMenuAdmin onReset={() => resetMenu()}/>
@@ -40,7 +45,7 @@ export const Menu = () => {
                         title={title}
                         price={formatPrice(price)}
                         hasDeleteButton={isModeAdmin}
-                        onDelete={() => handleDelete(id)}
+                        onDelete={(event) => handleCardDelete(event, id)}
                         onClick={() => handleClick(id)}
                         isHoverable={isModeAdmin}
                         isSelected={checkIfProductIsClicked(id, productSelected.id)}

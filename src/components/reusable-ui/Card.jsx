@@ -27,6 +27,7 @@ export const Card = ({imageSource, title, price, hasDeleteButton, onDelete, onCl
                                 className={"primary-button"}
                                 label={"Ajouter"}
                                 version={"normal"}
+                                onClick={(event) => event.stopPropagation()}
                             />
                         </div>
                     </div>
