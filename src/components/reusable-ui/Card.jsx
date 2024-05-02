@@ -6,7 +6,7 @@ import { TiDelete } from "react-icons/ti";
 
 export const Card = ({imageSource, title, price, hasDeleteButton, onDelete, onClick, isHoverable, isSelected}) => {
     return (
-        <CardStyled onClick={onClick} isHoverable={isHoverable} isSelected={isSelected}>
+        <CardStyled onClick={onClick} $isHoverable={isHoverable} $isSelected={isSelected}>
             <div className="card">
                 <div className="delete-button">
                     {hasDeleteButton && <button aria-label="delete-button" onClick={onDelete}>
@@ -38,7 +38,7 @@ export const Card = ({imageSource, title, price, hasDeleteButton, onDelete, onCl
 }
 
 const CardStyled = styled.div`
-    ${({ isHoverable }) => isHoverable && hoverableStyle}
+    ${({ $isHoverable }) => $isHoverable && hoverableStyle}
     border-radius: ${theme.borderRadius.extraRound};
     height: 330px;
 
@@ -135,7 +135,7 @@ const CardStyled = styled.div`
                 }
             }
         }
-        ${({isHoverable, isSelected}) => isHoverable && isSelected && selectedStyle}
+        ${({ $isHoverable, $isSelected}) => $isHoverable && $isSelected && selectedStyle}
     }
 `
 
