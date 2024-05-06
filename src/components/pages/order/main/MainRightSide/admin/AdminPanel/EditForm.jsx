@@ -8,6 +8,7 @@ import { getInputTextsConfig } from "./inputTextConfig";
 import { theme } from "../../../../../../../theme";
 import { Button } from "../../../../../../reusable-ui/Button";
 import { FiCheck } from "react-icons/fi";
+import EditInfoMessage from "./EditInfoMessage";
 
 export default function EditForm() {
     const { 
@@ -44,7 +45,7 @@ export default function EditForm() {
                 )}
             </div>
             <div className="submit">
-                <span>Cliquer sur un produit du menu pour le modifier <u>en temps réel</u></span>
+                <EditInfoMessage />
             </div>
         </EditFormStyled>
     )
@@ -67,17 +68,9 @@ const EditFormStyled = styled.form`
 
     .submit {
         grid-area: 4 / -2 / -1 / -1;
-        height: 35px;
         display: flex;
         align-items: center;
         position: relative;
         top: 3px;
-
-        span {
-            color: ${theme.colors.primary};
-            font-family: ${theme.fonts.family.globalText};
-            font-weight: ${theme.fonts.weights.regular};
-            font-size: ${theme.fonts.size.SM};
-        }
     }
 `;
