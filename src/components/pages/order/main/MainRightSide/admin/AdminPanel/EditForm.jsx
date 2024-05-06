@@ -6,6 +6,8 @@ import ImagePreview from "./ImagePreview";
 import { TextInput } from "../../../../../../reusable-ui/TextInput";
 import { getInputTextsConfig } from "./inputTextConfig";
 import { theme } from "../../../../../../../theme";
+import { Button } from "../../../../../../reusable-ui/Button";
+import { FiCheck } from "react-icons/fi";
 
 export default function EditForm() {
     const { 
@@ -41,9 +43,9 @@ export default function EditForm() {
                     />
                 )}
             </div>
-            {/* <div className="submit">
-                <HintMessage />
-            </div> */}
+            <div className="submit">
+                <span>Cliquer sur un produit du menu pour le modifier <u>en temps réel</u></span>
+            </div>
         </EditFormStyled>
     )
 }
@@ -65,36 +67,17 @@ const EditFormStyled = styled.form`
 
     .submit {
         grid-area: 4 / -2 / -1 / -1;
+        height: 35px;
         display: flex;
         align-items: center;
         position: relative;
         top: 3px;
 
-        .submit-button {
-            width: 50%;
-        }
-
-        .submit-message {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-left: 5px;
-
-            .icon {
-                color: ${theme.colors.success};
-                margin-left: 10px;
-                width: 1em;
-                height: 1em;
-                border: 1px solid ${theme.colors.success};
-                border-radius: 50%;
-                vertical-align: middle;
-            }
-            .message {
-                margin-left: 5px;
-                font-size: ${theme.fonts.size.SM};
-                color: ${theme.colors.success};
-                font-family: ${theme.fonts.family.globalText};
-            }
+        span {
+            color: ${theme.colors.primary};
+            font-family: ${theme.fonts.family.globalText};
+            font-weight: ${theme.fonts.weights.regular};
+            font-size: ${theme.fonts.size.SM};
         }
     }
 `;
