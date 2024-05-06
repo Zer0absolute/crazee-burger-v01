@@ -8,8 +8,14 @@ import { getInputTextsConfig } from "./inputTextConfig";
 import { theme } from "../../../../../../../theme";
 
 export default function EditForm() {
-    const { productSelected, setProductSelected, handleEdit  } = useContext(OrderContext)
+    const { 
+        productSelected, 
+        setProductSelected, 
+        handleEdit, 
+        titleEditRef
+    } = useContext(OrderContext)
     const inputTexts = getInputTextsConfig(productSelected)
+
 
     const handleChange = (event) => {
         const { name, value } = event.target
@@ -30,6 +36,7 @@ export default function EditForm() {
                 {inputTexts.map((input) => <TextInput 
                         key={input.id}
                         onChange={handleChange}
+                        ref={input.name === 'title' ? titleEditRef : null}
                         {...input}
                     />
                 )}
