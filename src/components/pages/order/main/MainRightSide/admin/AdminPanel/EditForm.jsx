@@ -1,13 +1,9 @@
 import { useContext } from "react";
-import HintMessage from "./HintMessage";
 import OrderContext from "../../../../../../../context/OrderContext";
 import styled from "styled-components";
 import ImagePreview from "./ImagePreview";
 import { TextInput } from "../../../../../../reusable-ui/TextInput";
 import { getInputTextsConfig } from "./inputTextConfig";
-import { theme } from "../../../../../../../theme";
-import { Button } from "../../../../../../reusable-ui/Button";
-import { FiCheck } from "react-icons/fi";
 import EditInfoMessage from "./EditInfoMessage";
 
 export default function EditForm() {
