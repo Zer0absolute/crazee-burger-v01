@@ -2,6 +2,8 @@ import OrderContext from "../../../../../../../context/OrderContext";
 import { EMPTY_PRODUCT } from "../../../../../../../enums/product";
 import { useContext, useState } from "react";
 import Form from "./Form";
+import { FiCheck } from "react-icons/fi";
+import { Button } from "../../../../../../reusable-ui/Button";
 
 export default function AddForm() {
     const [isSubmitted, setIsSubmitted] = useState(false)
@@ -35,6 +37,21 @@ export default function AddForm() {
             onSubmit={handleSubmit} 
             onChange={handleChange} 
             isSubmitted={isSubmitted}
+            QUELQUECHOSE={
+                <>
+                    <Button
+                        className="submit-button"
+                        label={"Ajouter un nouveau produit au menu"}
+                        version="success"
+                    />
+                    {isSubmitted && (
+                        <div className="submit-message">
+                            <FiCheck className="icon" />
+                            <span className="message">Ajouté avec succès !</span>
+                        </div>
+                    )}
+                </>
+            }
         />
     )
 }

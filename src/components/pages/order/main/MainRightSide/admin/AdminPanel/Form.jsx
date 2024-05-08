@@ -5,8 +5,9 @@ import { getInputTextsConfig } from "./inputTextConfig";
 import ImagePreview from './ImagePreview';
 import { theme } from "../../../../../../../theme";
 import { FiCheck } from "react-icons/fi";
+import { forwardRef } from "react";
 
-export default function Form({ product, onSubmit, onChange, isSubmitted }) {
+const Form = forwardRef(({ product, onSubmit, onChange, QUELQUECHOSE}, ref) => {
     const inputTexts = getInputTextsConfig(product)
 
     return (
@@ -16,26 +17,22 @@ export default function Form({ product, onSubmit, onChange, isSubmitted }) {
                 {inputTexts.map((input) => <TextInput 
                     key={input.id}
                     onChange={onChange}
+                    version={'minimalist'}
+                    ref={ref && input.name === 'title' ? ref : null}
                     {...input}
                     />
                 )}
             </div>
             <div className="submit">
-                <Button
-                    className="submit-button"
-                    label={"Ajouter un nouveau produit au menu"}
-                    version="success"
-                />
-                {isSubmitted && (
-                <div className="submit-message">
-                    <FiCheck className="icon" />
-                    <span className="message">Ajouté avec succès !</span>
-                </div>
-                )}
+                {QUELQUECHOSE}
             </div>
         </FormStyled>
     )
-}
+})
+
+Form.displayName = "Form";
+
+export default Form
 
 const FormStyled = styled.form`
     display: grid;

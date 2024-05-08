@@ -1,11 +1,10 @@
 // eslint-disable-next-line react/prop-types
 import styled, { css } from "styled-components";
 import {theme} from "../../theme/index.jsx";
-import React from "react";
-
+import { forwardRef } from "react";
 
 // eslint-disable-next-line react/prop-types
-export const TextInput = React.forwardRef(({Icon, onChange, version, ...extraProps }, ref) => {
+export const TextInput = forwardRef(({Icon, onChange, version, ...extraProps }, ref) => {
     return <TextInputStyled version={version}>
         <div className="icon">
             {Icon && Icon}
@@ -18,6 +17,8 @@ export const TextInput = React.forwardRef(({Icon, onChange, version, ...extraPro
         />
     </TextInputStyled>
 })
+
+TextInput.displayName = "TextInput";
 
 const TextInputStyled = styled.div`
     ${({ version }) => extraStyle[version]}
