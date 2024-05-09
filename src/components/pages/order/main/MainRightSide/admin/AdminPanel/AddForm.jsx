@@ -35,12 +35,11 @@ export default function AddForm() {
         <Form product={newProduct} onSubmit={handleSubmit} onChange={handleChange}>
             <>
                 <Button
-                    className="submit-button"
                     label={"Ajouter un nouveau produit au menu"}
                     version="success"
                 />
                 {isSubmitted && (
-                    <div className="submit-message">
+                    <div className="form-footer-message">
                         <FiCheck className="icon" />
                         <span className="message">Ajouté avec succès !</span>
                     </div>

@@ -62,7 +62,7 @@ const extraStyleNormal = css`
 `
 
 const extraStyleSuccess = css`
-    width: 42%;
+    width: 50%;
     height: 35px;
     background: ${theme.colors.success};
     font-weight: ${theme.fonts.weights.bold};
