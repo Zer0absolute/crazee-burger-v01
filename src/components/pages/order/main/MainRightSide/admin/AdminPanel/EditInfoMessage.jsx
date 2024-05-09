@@ -4,7 +4,7 @@ import { theme } from "../../../../../../../theme";
 export default function EditInfoMessage() {
     return (
         <EditInfoMessageStyled>
-                <span>Cliquer sur un produit du menu pour le modifier 
+                <span>Cliquer sur un produit du menu pour le modifier{" "}
                     <u>en temps réel</u>
                 </span>
         </EditInfoMessageStyled>

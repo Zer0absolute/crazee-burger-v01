@@ -24,26 +24,8 @@ export default function EditForm() {
     }
 
     return (
-        <Form 
-            product={productSelected} 
-            onChange={handleChange} 
-            ref={titleEditRef}
-            QUELQUECHOSE={<EditInfoMessage />}
-        />
-        // <EditFormStyled>
-        //     <ImagePreview imageSource={productSelected.imageSource} title={productSelected.title} />
-        //     <div className="input-fields">
-        //         {inputTexts.map((input) => <TextInput 
-        //                 key={input.id}
-        //                 onChange={handleChange}
-        //                 ref={}
-        //                 {...input}
-        //             />
-        //         )}
-        //     </div>
-        //     <div className="submit">
-        //         <EditInfoMessage />
-        //     </div>
-        // </EditFormStyled>
+        <Form product={productSelected} onChange={handleChange} ref={titleEditRef}>
+            <EditInfoMessage />
+        </Form>
     )
 }

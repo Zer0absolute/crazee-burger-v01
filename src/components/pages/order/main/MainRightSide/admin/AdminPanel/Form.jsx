@@ -1,13 +1,11 @@
 import styled from "styled-components";
-import { Button } from "../../../../../../reusable-ui/Button";
 import { TextInput } from "../../../../../../reusable-ui/TextInput";
 import { getInputTextsConfig } from "./inputTextConfig";
 import ImagePreview from './ImagePreview';
 import { theme } from "../../../../../../../theme";
-import { FiCheck } from "react-icons/fi";
 import { forwardRef } from "react";
 
-const Form = forwardRef(({ product, onSubmit, onChange, QUELQUECHOSE}, ref) => {
+const Form = forwardRef(({ product, onSubmit, onChange, children}, ref) => {
     const inputTexts = getInputTextsConfig(product)
 
     return (
@@ -24,7 +22,7 @@ const Form = forwardRef(({ product, onSubmit, onChange, QUELQUECHOSE}, ref) => {
                 )}
             </div>
             <div className="submit">
-                {QUELQUECHOSE}
+                {children}
             </div>
         </FormStyled>
     )
