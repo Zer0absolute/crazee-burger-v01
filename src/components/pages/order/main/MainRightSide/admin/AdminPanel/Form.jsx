@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { TextInput } from "../../../../../../reusable-ui/TextInput";
 import { getInputTextsConfig } from "./inputTextConfig";
 import ImagePreview from './ImagePreview';
-import { theme } from "../../../../../../../theme";
 import { forwardRef } from "react";
 
 const Form = forwardRef(({ product, onSubmit, onChange, children}, ref) => {
@@ -53,28 +52,5 @@ const FormStyled = styled.form`
         align-items: center;
         position: relative;
         margin-top: -6px;
-
-        .form-footer-message {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-left: 5px;
-
-            .icon {
-                color: ${theme.colors.success};
-                margin-left: 10px;
-                width: 1em;
-                height: 1em;
-                border: 1px solid ${theme.colors.success};
-                border-radius: 50%;
-                vertical-align: middle;
-            }
-            .message {
-                margin-left: 5px;
-                font-size: ${theme.fonts.size.SM};
-                color: ${theme.colors.success};
-                font-family: ${theme.fonts.family.globalText};
-            }
-        }
     }
 `;
