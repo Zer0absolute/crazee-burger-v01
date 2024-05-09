@@ -25,7 +25,7 @@ const ImagePreviewStyled = styled.div`
         justify-content: center;
         align-items: center;
         width: 100%;
-        height: 100%;
+        height: 88%;
         border: 1px solid ${theme.colors.greyLight};
         border-radius: ${theme.borderRadius.round};
         color: ${theme.colors.greySemiDark};

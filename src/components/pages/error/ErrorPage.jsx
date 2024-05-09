@@ -24,7 +24,10 @@ export const ErrorPage = () => {
             </div>
             <br/>
             <Link to={'/'}>
-                <Button label={"Retourner vers la page d'accueil"}/>
+                <Button 
+                    label={"Retourner vers la page d'accueil"}
+                    version={"normal"}
+                />
             </Link>
         </div>
     </ErrorPageStyled>

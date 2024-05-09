@@ -2,10 +2,11 @@ import styled from "styled-components";
 import {theme} from "../../../theme/index.jsx";
 import {Navbar} from "./Navbar/Navbar.jsx";
 import {Main} from "./main/Main.jsx";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import OrderContext from "../../../context/OrderContext.jsx"
 import { fakeMenu } from "../../../fakeData/fakeMenu.js";
-import { EMPTY_PRODUCT } from "./main/MainRightSide/admin/AdminPanel/AddForm.jsx";
+import { EMPTY_PRODUCT } from "../../../enums/product.js";
+import { deepClone } from "../../../utils/array.js";
 
 export const OrderPage = () => {
     const [isModeAdmin, setIsModeAdmin] = useState(false);
@@ -13,15 +14,24 @@ export const OrderPage = () => {
     const [currentTabSelected, setCurrentTabSelected] = useState("add")
     const [menu, setMenu] = useState(fakeMenu.LARGE);
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+    const [ productSelected, setProductSelected ] = useState(EMPTY_PRODUCT)
+    const titleEditRef = useRef()
 
     const handleAdd = (newProduct) => { 
-        const menuCopy = [...menu]
+        const menuCopy = deepClone(menu)
         const menuUpdate = [newProduct, ...menuCopy]
         setMenu(menuUpdate)
     }
 
+    const handleEdit = (productBeingEdited) => {
+        const menuCopy = deepClone(menu)
+        const indexOfProducToEdit = menu.findIndex((product) => product.id === productBeingEdited.id)
+        menuCopy[indexOfProducToEdit] = productBeingEdited
+        setMenu(menuCopy)
+    }
+
     const handleDelete = (productId) => {
-        const menuCopy = [...menu]
+        const menuCopy = deepClone(menu)
         const menuUpdated = menuCopy.filter((product) => product.id !== productId)
         setMenu(menuUpdated)
     }
@@ -43,7 +53,11 @@ export const OrderPage = () => {
         resetMenu,
         handleAdd,
         newProduct,
-        setNewProduct
+        setNewProduct,
+        productSelected,
+        setProductSelected,
+        handleEdit,
+        titleEditRef,
     }
 
     return (

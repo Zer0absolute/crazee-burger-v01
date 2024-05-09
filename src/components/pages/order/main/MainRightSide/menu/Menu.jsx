@@ -6,6 +6,8 @@ import EmptyMenuClient from "./EmptyMenuClient.jsx";
 import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx";
 import { formatPrice } from "../../../../../../utils/maths.js";
 import { Card } from "../../../../../reusable-ui/Card.jsx";
+import { checkIfProductIsClicked } from "./helper.jsx";
+import { EMPTY_PRODUCT } from "../../../../../../enums/product.js";
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
@@ -15,7 +17,29 @@ export const Menu = () => {
         isModeAdmin,
         handleDelete,
         resetMenu,
+        productSelected,
+        setProductSelected,
+        setIsCollapsed,
+        setCurrentTabSelected,
+        titleEditRef,
     } = useContext(OrderContext)
+
+    const handleClick = async (idProductClicked) => {
+        if(!isModeAdmin) return
+        
+        await setIsCollapsed(false)
+        await setCurrentTabSelected("edit")
+        const productClickOn = menu.find((product) => product.id === idProductClicked)
+        await setProductSelected(productClickOn)
+        titleEditRef.current.focus()
+    }
+
+    const handleCardDelete = (event, idProductToDelete) => {
+        event.stopPropagation()
+        handleDelete(idProductToDelete)
+        idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
+        titleEditRef.current.focus()
+    }
 
     if(menu.length === 0) {
         if(!isModeAdmin) return <EmptyMenuClient />
@@ -32,7 +56,10 @@ export const Menu = () => {
                         title={title}
                         price={formatPrice(price)}
                         hasDeleteButton={isModeAdmin}
-                        onDelete={() => handleDelete(id)}
+                        onDelete={(event) => handleCardDelete(event, id)}
+                        onClick={() => handleClick(id)}
+                        isHoverable={isModeAdmin}
+                        isSelected={checkIfProductIsClicked(id, productSelected.id)}
                     />
                 )
             })}
