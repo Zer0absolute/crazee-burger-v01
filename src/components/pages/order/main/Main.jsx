@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import {theme} from "../../../../theme/index.jsx";
 import {MainRightSide} from "./MainRightSide/MainRightSide.jsx";
+import Basket from "./Basket/Basket.jsx";
 
 export const Main = () => {
     return (
         <MainStyled>
-            {/*<div className="basket">*/}
-            {/*    basket*/}
-            {/*</div>*/}
+            <Basket/>
             <MainRightSide/>
         </MainStyled>
     )
@@ -23,11 +22,5 @@ const MainStyled = styled.main`
     overflow: hidden;
     scrollbar-color: transparent transparent;
     display: grid;
-    grid-template-columns: 1fr;
-    /* This code will be use for Basket */
-    //grid-template-columns: 25% 1fr; 
-    
-    //.basket {
-    //    background: blue;
-    //}
+    grid-template-columns: 25% 1fr;
 `
