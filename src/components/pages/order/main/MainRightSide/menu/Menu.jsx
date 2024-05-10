@@ -38,7 +38,7 @@ export const Menu = () => {
         event.stopPropagation()
         handleDelete(idProductToDelete)
         idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
-        titleEditRef.current.focus()
+        titleEditRef.current && titleEditRef.current.focus()
     }
 
     if(menu.length === 0) {
