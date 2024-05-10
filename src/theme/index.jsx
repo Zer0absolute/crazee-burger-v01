@@ -3,7 +3,7 @@ const colors = {
   incognito: "#333",
   white: "#fff",
   background_white: "#f5f5f7",
-  background_dark: "#292729",
+  background_dark: "#282729",
   primary: "#FF9F1B",
   green: "green",
   success: "#60bd4f",
@@ -67,6 +67,7 @@ const shadows = {
   medium: "-8px 8px 20px 0px rgb(0 0 0 / 20%)",
   strong: "0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset",
   orangeHighlight: "0 0 8px 0 rgb(255 154 35 / 100%)",
+  basket: "inset 0px 0px 20px rgba(0, 0, 0, 0.2)",
 }
 
 export const theme = {
