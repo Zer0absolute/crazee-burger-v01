@@ -1,7 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../../../../theme";
 import { formatPrice } from "../../../../../utils/maths";
-import Header from "../../../../reusable-ui/Header";
 import Total from "./Total";
 import BasketBody from "./BasketBody";
 import Footer from "./Footer";
