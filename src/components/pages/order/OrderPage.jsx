@@ -16,7 +16,7 @@ export const OrderPage = () => {
     const [ productSelected, setProductSelected ] = useState(EMPTY_PRODUCT)
     const titleEditRef = useRef()
     const { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu()
-    const { basket, handleAddToBasket } = useBasket()
+    const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
 
     const orderContextValue = {
         isModeAdmin,
@@ -38,6 +38,7 @@ export const OrderPage = () => {
         titleEditRef,
         basket,
         handleAddToBasket,
+        handleDeleteBasketProduct,
     }
 
     return (
