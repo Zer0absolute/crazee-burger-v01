@@ -7,9 +7,7 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx";
 import { formatPrice } from "../../../../../../utils/maths.js";
 import { Card } from "../../../../../reusable-ui/Card.jsx";
 import { checkIfProductIsClicked } from "./helper.jsx";
-import { EMPTY_PRODUCT } from "../../../../../../enums/product.js";
-
-const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
+import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../../../../enums/product.js";
 
 export const Menu = () => {
     const { 
