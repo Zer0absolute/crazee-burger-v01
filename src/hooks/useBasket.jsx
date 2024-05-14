@@ -1,32 +1,40 @@
 import { useState } from "react"
 import { fakeBasket } from "../fakeData/fakeBasket"
-import { deepClone, findToArray } from "../utils/array"
-import BasketProducts from "../components/pages/order/main/Basket/BasketProducts"
+import { deepClone, findToArray, getIndex } from "../utils/array"
 
 export const useBasket = () => {
     const [basket, setBasket] = useState(fakeBasket.EMPTY)
 
     const handleAddToBasket = (productToAdd) => {
         const basketCopy = deepClone(basket)
-        const isProductAlreadyInBasket = findToArray(productToAdd.id, basketCopy)
-        // 1er cas : Le produit n'est pas dans le basket
-        if(!isProductAlreadyInBasket) {
-            const newBasketProduct = {
-                ...productToAdd,
-                quantity: 1,
-            }
+        const productFoundInBasket = findToArray(productToAdd.id, basketCopy)
 
-            const basketUpdated = [newBasketProduct, ...basketCopy]
-            setBasket(basketUpdated)
-        } else {
-            //2eme cas : le produit est déjà dans le basket
-            const indexOfBasketProductToIncrement = basket.findIndex(
-                (BasketProduct) => BasketProduct.id === productToAdd.id
-            )
-            basketCopy[indexOfBasketProductToIncrement].quantity += 1
-            setBasket(basketCopy)
+        // 1er cas : Le produit n'est pas dans le basket
+        if(!productFoundInBasket) {
+            createNewProductInBasket(productToAdd, basketCopy, setBasket)
+            return
         }
 
+        //2eme cas : le produit est déjà dans le basket
+        incrementProductAlreadyInBasket(productToAdd, basketCopy)
     }
+
+    const incrementProductAlreadyInBasket = (productToAdd, basketCopy) => {
+        const indexOfBasketProductToIncrement = getIndex(productToAdd.id, basketCopy)
+        basketCopy[indexOfBasketProductToIncrement].quantity += 1
+        setBasket(basketCopy)
+    }
+
+    const createNewProductInBasket= (productToAdd, basketCopy, setBasket) => {
+        const newBasketProduct = {
+            ...productToAdd,
+            quantity: 1,
+        }
+    
+        const basketUpdated = [newBasketProduct, ...basketCopy]
+        setBasket(basketUpdated)
+    }
+    
     return { basket, handleAddToBasket }
 }
+
