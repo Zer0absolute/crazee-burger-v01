@@ -4,7 +4,7 @@ import {theme} from "../../theme/index.jsx";
 import {Button} from "./Button.jsx";
 import { TiDelete } from "react-icons/ti";
 
-export const Card = ({imageSource, title, price, hasDeleteButton, onDelete, onClick, isHoverable, isSelected}) => {
+export const Card = ({imageSource, title, price, hasDeleteButton, onDelete, onClick, isHoverable, isSelected, onAdd}) => {
     return (
         <CardStyled onClick={onClick} $isHoverable={isHoverable} $isSelected={isSelected}>
             <div className="card">
@@ -27,7 +27,7 @@ export const Card = ({imageSource, title, price, hasDeleteButton, onDelete, onCl
                                 className={"primary-button"}
                                 label={"Ajouter"}
                                 version={"normal"}
-                                onClick={(event) => event.stopPropagation()}
+                                onClick={onAdd}
                             />
                         </div>
                     </div>

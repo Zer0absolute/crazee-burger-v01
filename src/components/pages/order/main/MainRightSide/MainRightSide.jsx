@@ -17,5 +17,5 @@ export const MainRightSide = () => {
 const MainRightSideStyled = styled.div`
     display: grid;
     position: relative;
-    overflow-y: hidden;
+    overflow-y: hidden; 
 `

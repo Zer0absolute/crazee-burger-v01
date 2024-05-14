@@ -7,9 +7,8 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin.jsx";
 import { formatPrice } from "../../../../../../utils/maths.js";
 import { Card } from "../../../../../reusable-ui/Card.jsx";
 import { checkIfProductIsClicked } from "./helper.jsx";
-import { EMPTY_PRODUCT } from "../../../../../../enums/product.js";
-
-const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
+import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../../../../enums/product.js";
+import { findToArray } from "../../../../../../utils/array.js";
 
 export const Menu = () => {
     const { 
@@ -22,6 +21,8 @@ export const Menu = () => {
         setIsCollapsed,
         setCurrentTabSelected,
         titleEditRef,
+        handleAddToBasket,
+        handleDeleteBasketProduct
     } = useContext(OrderContext)
 
     const handleClick = async (idProductClicked) => {
@@ -29,7 +30,7 @@ export const Menu = () => {
         
         await setIsCollapsed(false)
         await setCurrentTabSelected("edit")
-        const productClickOn = menu.find((product) => product.id === idProductClicked)
+        const productClickOn = findToArray(idProductClicked, menu)
         await setProductSelected(productClickOn)
         titleEditRef.current.focus()
     }
@@ -37,8 +38,15 @@ export const Menu = () => {
     const handleCardDelete = (event, idProductToDelete) => {
         event.stopPropagation()
         handleDelete(idProductToDelete)
+        handleDeleteBasketProduct(idProductToDelete)
         idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
         titleEditRef.current && titleEditRef.current.focus()
+    }
+
+    const handleAddButton = (event, idProductToAdd) => {
+        event.stopPropagation()
+        const productToAdd = findToArray(idProductToAdd, menu)
+        handleAddToBasket(productToAdd)
     }
 
     if(menu.length === 0) {
@@ -60,6 +68,7 @@ export const Menu = () => {
                         onClick={() => handleClick(id)}
                         isHoverable={isModeAdmin}
                         isSelected={checkIfProductIsClicked(id, productSelected.id)}
+                        onAdd={(event) => handleAddButton(event, id)}
                     />
                 )
             })}
@@ -76,4 +85,9 @@ const MenuStyled = styled.div`
     padding: 50px 50px 150px;
     grid-template-columns: repeat(3, 1fr);
     box-shadow: ${theme.shadows.strong};
+
+    &:hover {
+        overflow: auto;
+        scrollbar-color: initial;
+    }  
 `
