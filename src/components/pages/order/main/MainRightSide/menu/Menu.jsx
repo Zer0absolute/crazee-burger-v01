@@ -76,4 +76,9 @@ const MenuStyled = styled.div`
     padding: 50px 50px 150px;
     grid-template-columns: repeat(3, 1fr);
     box-shadow: ${theme.shadows.strong};
+
+    &:hover {
+        overflow: auto;
+        scrollbar-color: initial;
+    }  
 `
