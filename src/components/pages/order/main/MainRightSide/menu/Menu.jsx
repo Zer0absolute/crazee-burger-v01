@@ -21,7 +21,8 @@ export const Menu = () => {
         setIsCollapsed,
         setCurrentTabSelected,
         titleEditRef,
-        handleAddToBasket
+        handleAddToBasket,
+        handleDeleteBasketProduct
     } = useContext(OrderContext)
 
     const handleClick = async (idProductClicked) => {
@@ -37,6 +38,7 @@ export const Menu = () => {
     const handleCardDelete = (event, idProductToDelete) => {
         event.stopPropagation()
         handleDelete(idProductToDelete)
+        handleDeleteBasketProduct(idProductToDelete)
         idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
         titleEditRef.current && titleEditRef.current.focus()
     }
