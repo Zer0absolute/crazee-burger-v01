@@ -8,7 +8,7 @@ import { formatPrice } from "../../../../../../utils/maths.js";
 import { Card } from "../../../../../reusable-ui/Card.jsx";
 import { checkIfProductIsClicked } from "./helper.jsx";
 import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../../../../enums/product.js";
-import { findToArray } from "../../../../../../utils/array.js";
+import { findObjectById, isEmpty } from "../../../../../../utils/array.js";
 
 export const Menu = () => {
     const { 
@@ -30,7 +30,7 @@ export const Menu = () => {
         
         await setIsCollapsed(false)
         await setCurrentTabSelected("edit")
-        const productClickOn = findToArray(idProductClicked, menu)
+        const productClickOn = findObjectById(idProductClicked, menu)
         await setProductSelected(productClickOn)
         titleEditRef.current.focus()
     }
@@ -45,11 +45,11 @@ export const Menu = () => {
 
     const handleAddButton = (event, idProductToAdd) => {
         event.stopPropagation()
-        const productToAdd = findToArray(idProductToAdd, menu)
+        const productToAdd = findObjectById(idProductToAdd, menu)
         handleAddToBasket(productToAdd)
     }
 
-    if(menu.length === 0) {
+    if(isEmpty(menu)) {
         if(!isModeAdmin) return <EmptyMenuClient />
         return isModeAdmin && <EmptyMenuAdmin onReset={() => resetMenu()}/>
     }

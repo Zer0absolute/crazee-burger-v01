@@ -1,13 +1,13 @@
 import { useState } from "react"
 import { fakeBasket } from "../fakeData/fakeBasket"
-import { deepClone, findToArray, getFilter, getIndex } from "../utils/array"
+import { deepClone, findObjectById, removeObjectById, findIndexById } from "../utils/array"
 
 export const useBasket = () => {
     const [basket, setBasket] = useState(fakeBasket.EMPTY)
 
     const handleAddToBasket = (productToAdd) => {
         const basketCopy = deepClone(basket)
-        const productFoundInBasket = findToArray(productToAdd.id, basketCopy)
+        const productFoundInBasket = findObjectById(productToAdd.id, basketCopy)
 
         // 1er cas : Le produit n'est pas dans le basket
         if(!productFoundInBasket) {
@@ -20,7 +20,7 @@ export const useBasket = () => {
     }
 
     const incrementProductAlreadyInBasket = (productToAdd, basketCopy) => {
-        const indexOfBasketProductToIncrement = getIndex(productToAdd.id, basketCopy)
+        const indexOfBasketProductToIncrement = findIndexById(productToAdd.id, basketCopy)
         basketCopy[indexOfBasketProductToIncrement].quantity += 1
         setBasket(basketCopy)
     }
@@ -37,7 +37,7 @@ export const useBasket = () => {
 
     const handleDeleteBasketProduct = (idBasketProduct) => {
         const basketCopy = deepClone(basket)
-        const basketUpdated = getFilter(idBasketProduct, basketCopy)
+        const basketUpdated = removeObjectById(idBasketProduct, basketCopy)
         setBasket(basketUpdated)
     }
     
