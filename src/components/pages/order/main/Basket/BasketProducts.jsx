@@ -12,7 +12,7 @@ export default function BasketProducts({basket, isModeAdmin, handleDeleteBasketP
                 <div className="basket-card" key={basketProduct.id}>
                     <BasketCard 
                         onDelete={() => handleOnDelete(basketProduct.id)} 
-                        isModeAdmin={isModeAdmin} 
+                        isClickable={isModeAdmin} 
                         {...basketProduct}
                     />
                 </div>
