@@ -3,9 +3,10 @@ import BasketCard from "./BasketCard";
 import { findObjectById } from "../../../../../utils/array";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
+import { checkIfProductIsClicked } from "../MainRightSide/menu/helper";
 
 export default function BasketProducts() {
-    const {basket, isModeAdmin, handleDeleteBasketProduct, menu, handleProductSelected} = useContext(OrderContext)
+    const {basket, isModeAdmin, handleDeleteBasketProduct, menu, handleProductSelected, productSelected } = useContext(OrderContext)
 
     const handleOnDelete = (event, id) => {
         event.stopPropagation()
@@ -24,6 +25,7 @@ export default function BasketProducts() {
                             quantity={basketProduct.quantity}
                             isClickable={isModeAdmin}
                             onClick={isModeAdmin ? () => handleProductSelected(basketProduct.id) : null}
+                            isSelected={checkIfProductIsClicked(basketProduct.id, productSelected.id)}
                         />
                     </div>
                 )
