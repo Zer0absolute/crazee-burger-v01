@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { MdDeleteForever } from "react-icons/md"
 import { theme } from "../../../../../theme"
 import { formatPrice } from "../../../../../utils/maths"
@@ -10,34 +10,36 @@ export default function BasketCard({
     quantity,
     imageSource,
     className,
-    isModeAdmin,
+    isClickable,
+    onClick,
     onDelete,
+    isSelected
 }) {
     return (
-    <BasketCardStyled className={className} $isModeAdmin={isModeAdmin}>
-        <div className="delete-button" onClick={onDelete}>
-            <MdDeleteForever className="icon" />
-        </div>
-        <div className="image">
-            <img src={imageSource ? imageSource : IMAGE_BY_DEFAULT} alt={title} />
-        </div>
-        <div className="text-info">
-            <div className="left-info">
-                <div className="title">
-                    <span>{title}</span>
+        <BasketCardStyled className={className} $isClickable={isClickable} onClick={onClick} $isSelected={isSelected}>
+            <div className="delete-button" onClick={onDelete}>
+                <MdDeleteForever className="icon" />
+            </div>
+            <div className="image">
+                <img src={imageSource ? imageSource : IMAGE_BY_DEFAULT} alt={title} />
+            </div>
+            <div className="text-info">
+                <div className="left-info">
+                    <div className="title">
+                        <span>{title}</span>
+                    </div>
+                    <span className="price">{formatPrice(price)}</span>
                 </div>
-                <span className="price">{formatPrice(price)}</span>
+                <div className="quantity">
+                    <span>x {quantity}</span>
+                </div>
             </div>
-            <div className="quantity">
-                <span>x {quantity}</span>
-            </div>
-        </div>
         </BasketCardStyled>
     )
 }
 
 const BasketCardStyled = styled.div`
-    cursor: ${({ $isModeAdmin }) => ($isModeAdmin ? "pointer" : "auto")};
+    cursor: ${({ $isClickable }) => ($isClickable ? "pointer" : "auto")};
   /* border: 1px solid red; */
     box-sizing: border-box;
     height: 86px;
@@ -166,5 +168,14 @@ const BasketCardStyled = styled.div`
                 }
             }
         }
+    }
+
+    ${({ $isClickable, $isSelected }) => $isClickable && $isSelected && selectedStyled}
+`
+const selectedStyled = css`
+    background: ${theme.colors.primary};
+    .price,
+    .quantity {
+        color: ${theme.colors.white};
     }
 `

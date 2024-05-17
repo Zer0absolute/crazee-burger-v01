@@ -1,25 +1,39 @@
 import styled from "styled-components";
 import BasketCard from "./BasketCard";
+import { findObjectById } from "../../../../../utils/array";
+import { useContext } from "react";
+import OrderContext from "../../../../../context/OrderContext";
+import { checkIfProductIsClicked } from "../MainRightSide/menu/helper";
 
-export default function BasketProducts({basket, isModeAdmin, handleDeleteBasketProduct}) {
-    const handleOnDelete = (id) => {
+export default function BasketProducts() {
+    const {basket, isModeAdmin, handleDeleteBasketProduct, menu, handleProductSelected, productSelected } = useContext(OrderContext)
+
+    const handleOnDelete = (event, id) => {
+        event.stopPropagation()
         handleDeleteBasketProduct(id)
     }
 
     return (
         <BasketProductsStyled>
-            {basket.map((basketProduct) => (
-                <div className="basket-card" key={basketProduct.id}>
-                    <BasketCard 
-                        onDelete={() => handleOnDelete(basketProduct.id)} 
-                        isModeAdmin={isModeAdmin} 
-                        {...basketProduct}
-                    />
-                </div>
-            ))}
+            {basket.map((basketProduct) => {
+                const menuProduct = findObjectById(basketProduct.id, menu)
+                return (
+                    <div className="basket-card" key={basketProduct.id}>
+                        <BasketCard 
+                            {...menuProduct}
+                            onDelete={(event) => handleOnDelete(event, basketProduct.id)}
+                            quantity={basketProduct.quantity}
+                            isClickable={isModeAdmin}
+                            onClick={isModeAdmin ? () => handleProductSelected(basketProduct.id) : null}
+                            isSelected={checkIfProductIsClicked(basketProduct.id, productSelected.id)}
+                        />
+                    </div>
+                )
+            })}
         </BasketProductsStyled>
     )
 }
+
 
 const BasketProductsStyled = styled.div`
     flex: 1;
