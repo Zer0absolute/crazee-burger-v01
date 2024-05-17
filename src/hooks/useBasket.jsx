@@ -5,34 +5,32 @@ import { deepClone, findObjectById, removeObjectById, findIndexById } from "../u
 export const useBasket = () => {
     const [basket, setBasket] = useState(fakeBasket.EMPTY)
 
-    const handleAddToBasket = (productToAdd) => {
+    const handleAddToBasket = (idProductToAdd) => {
         const basketCopy = deepClone(basket)
-        const productFoundInBasket = findObjectById(productToAdd.id, basketCopy)
-
-        // 1er cas : Le produit n'est pas dans le basket
-        if(!productFoundInBasket) {
-            createNewProductInBasket(productToAdd, basketCopy, setBasket)
+        const productAlreadyInBasket = findObjectById(idProductToAdd, basketCopy)
+        if(productAlreadyInBasket) {
+            incrementProductAlreadyInBasket(idProductToAdd, basketCopy)
             return
         }
 
-        //2eme cas : le produit est déjà dans le basket
-        incrementProductAlreadyInBasket(productToAdd, basketCopy)
+        createNewBasketProduct(idProductToAdd, basketCopy, setBasket)
     }
 
-    const incrementProductAlreadyInBasket = (productToAdd, basketCopy) => {
-        const indexOfBasketProductToIncrement = findIndexById(productToAdd.id, basketCopy)
-        basketCopy[indexOfBasketProductToIncrement].quantity += 1
-        setBasket(basketCopy)
-    }
 
-    const createNewProductInBasket= (productToAdd, basketCopy, setBasket) => {
+    const createNewBasketProduct = (idProductToAdd, basketCopy, setBasket) => {
+        // we do not re-create a whole product, we only add the extra info a basket product has in comparison to a menu product
         const newBasketProduct = {
-            ...productToAdd,
+            id: idProductToAdd,
             quantity: 1,
         }
+        const newBasket = [newBasketProduct, ...basketCopy]
+        setBasket(newBasket)
+    }
     
-        const basketUpdated = [newBasketProduct, ...basketCopy]
-        setBasket(basketUpdated)
+    const incrementProductAlreadyInBasket = (idProductToAdd, basketCopy) => {
+        const indexOfBasketProductToIncrement = findIndexById(idProductToAdd.id, basketCopy)
+        basketCopy[indexOfBasketProductToIncrement].quantity += 1
+        setBasket(basketCopy)
     }
 
     const handleDeleteBasketProduct = (idBasketProduct) => {
@@ -43,4 +41,5 @@ export const useBasket = () => {
     
     return { basket, handleAddToBasket, handleDeleteBasketProduct }
 }
+
 
