@@ -11,27 +11,28 @@ export default function BasketCard({
     imageSource,
     className,
     isClickable,
+    onClick,
     onDelete,
 }) {
     return (
-    <BasketCardStyled className={className} $isClickable={isClickable}>
-        <div className="delete-button" onClick={onDelete}>
-            <MdDeleteForever className="icon" />
-        </div>
-        <div className="image">
-            <img src={imageSource ? imageSource : IMAGE_BY_DEFAULT} alt={title} />
-        </div>
-        <div className="text-info">
-            <div className="left-info">
-                <div className="title">
-                    <span>{title}</span>
+        <BasketCardStyled className={className} $isClickable={isClickable} onClick={onClick}>
+            <div className="delete-button" onClick={onDelete}>
+                <MdDeleteForever className="icon" />
+            </div>
+            <div className="image">
+                <img src={imageSource ? imageSource : IMAGE_BY_DEFAULT} alt={title} />
+            </div>
+            <div className="text-info">
+                <div className="left-info">
+                    <div className="title">
+                        <span>{title}</span>
+                    </div>
+                    <span className="price">{formatPrice(price)}</span>
                 </div>
-                <span className="price">{formatPrice(price)}</span>
+                <div className="quantity">
+                    <span>x {quantity}</span>
+                </div>
             </div>
-            <div className="quantity">
-                <span>x {quantity}</span>
-            </div>
-        </div>
         </BasketCardStyled>
     )
 }

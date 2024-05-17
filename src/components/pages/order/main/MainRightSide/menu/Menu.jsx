@@ -8,7 +8,7 @@ import { formatPrice } from "../../../../../../utils/maths.js";
 import { Card } from "../../../../../reusable-ui/Card.jsx";
 import { checkIfProductIsClicked } from "./helper.jsx";
 import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../../../../enums/product.js";
-import { findObjectById, isEmpty } from "../../../../../../utils/array.js";
+import { isEmpty } from "../../../../../../utils/array.js";
 
 export const Menu = () => {
     const { 
@@ -18,29 +18,16 @@ export const Menu = () => {
         resetMenu,
         productSelected,
         setProductSelected,
-        setIsCollapsed,
-        setCurrentTabSelected,
-        titleEditRef,
         handleAddToBasket,
-        handleDeleteBasketProduct
+        handleDeleteBasketProduct,
+        handleProductSelected
     } = useContext(OrderContext)
-
-    const handleClick = async (idProductClicked) => {
-        if(!isModeAdmin) return
-        
-        await setIsCollapsed(false)
-        await setCurrentTabSelected("edit")
-        const productClickOn = findObjectById(idProductClicked, menu)
-        await setProductSelected(productClickOn)
-        titleEditRef.current.focus()
-    }
 
     const handleCardDelete = (event, idProductToDelete) => {
         event.stopPropagation()
         handleDelete(idProductToDelete)
         handleDeleteBasketProduct(idProductToDelete)
         idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
-        titleEditRef.current && titleEditRef.current.focus()
     }
 
     const handleAddButton = (event, idProductToAdd) => {
@@ -64,7 +51,7 @@ export const Menu = () => {
                         price={formatPrice(price)}
                         hasDeleteButton={isModeAdmin}
                         onDelete={(event) => handleCardDelete(event, id)}
-                        onClick={() => handleClick(id)}
+                        onClick={isModeAdmin ? () => handleProductSelected(id) : null}
                         isHoverable={isModeAdmin}
                         isSelected={checkIfProductIsClicked(id, productSelected.id)}
                         onAdd={(event) => handleAddButton(event, id)}

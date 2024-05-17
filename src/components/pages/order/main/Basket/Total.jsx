@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import Header from "../../../../reusable-ui/Header";
-import { calculateSumToPay, formatPrice } from "../../../../../utils/maths";
+import { formatPrice } from "../../../../../utils/maths";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
+import { calculateSumToPay } from "./helpers";
 
 export default function Total() {
     const { basket, menu } = useContext(OrderContext)

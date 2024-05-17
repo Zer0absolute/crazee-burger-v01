@@ -5,9 +5,10 @@ import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 
 export default function BasketProducts() {
-    const {basket, isModeAdmin, handleDeleteBasketProduct, menu} = useContext(OrderContext)
+    const {basket, isModeAdmin, handleDeleteBasketProduct, menu, handleProductSelected} = useContext(OrderContext)
 
-    const handleOnDelete = (id) => {
+    const handleOnDelete = (event, id) => {
+        event.stopPropagation()
         handleDeleteBasketProduct(id)
     }
 
@@ -19,9 +20,10 @@ export default function BasketProducts() {
                     <div className="basket-card" key={basketProduct.id}>
                         <BasketCard 
                             {...menuProduct}
-                            onDelete={() => handleOnDelete(basketProduct.id)}
+                            onDelete={(event) => handleOnDelete(event, basketProduct.id)}
                             quantity={basketProduct.quantity}
-                            isClickable={isModeAdmin} 
+                            isClickable={isModeAdmin}
+                            onClick={isModeAdmin ? () => handleProductSelected(basketProduct.id) : null}
                         />
                     </div>
                 )
