@@ -1,25 +1,35 @@
 import styled from "styled-components";
 import BasketCard from "./BasketCard";
+import { findObjectById } from "../../../../../utils/array";
+import { useContext } from "react";
+import OrderContext from "../../../../../context/OrderContext";
 
-export default function BasketProducts({basket, isModeAdmin, handleDeleteBasketProduct}) {
+export default function BasketProducts() {
+    const {basket, isModeAdmin, handleDeleteBasketProduct, menu} = useContext(OrderContext)
+
     const handleOnDelete = (id) => {
         handleDeleteBasketProduct(id)
     }
 
     return (
         <BasketProductsStyled>
-            {basket.map((basketProduct) => (
-                <div className="basket-card" key={basketProduct.id}>
-                    <BasketCard 
-                        onDelete={() => handleOnDelete(basketProduct.id)} 
-                        isClickable={isModeAdmin} 
-                        {...basketProduct}
-                    />
-                </div>
-            ))}
+            {basket.map((basketProduct) => {
+                const menuProduct = findObjectById(basketProduct.id, menu)
+                return (
+                    <div className="basket-card" key={basketProduct.id}>
+                        <BasketCard 
+                            {...menuProduct}
+                            onDelete={() => handleOnDelete(basketProduct.id)}
+                            quantity={basketProduct.quantity}
+                            isClickable={isModeAdmin} 
+                        />
+                    </div>
+                )
+            })}
         </BasketProductsStyled>
     )
 }
+
 
 const BasketProductsStyled = styled.div`
     flex: 1;
