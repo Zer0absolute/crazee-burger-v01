@@ -7,6 +7,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import {Button} from "../../reusable-ui/Button.jsx";
 import {theme} from "../../../theme/index.jsx";
 import { authenticateUser } from "../../../api/user.js";
+import Welcome from "./Welcome.jsx";
 
 export const LoginForm = () => {
     const [username, setUsername] = useState('');
@@ -24,11 +25,7 @@ export const LoginForm = () => {
     }
 
     return <LoginFormStyled action={'submit'} onSubmit={handleSubmit}>
-            <div>
-                <h1>Bienvenue chez nous !</h1>
-                <hr/>
-                <h2>Connectez-vous</h2>
-            </div>
+            <Welcome />
             <div className="form-container">
                 <TextInput
                     value={username}
@@ -49,28 +46,6 @@ export const LoginForm = () => {
 
 const LoginFormStyled = styled.form`
     width: 400px;
-    
-    h1, h2 {
-        font-family: Amatic SC, cursive;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: ${theme.colors.white};
-    }
-    
-    h1 {
-        margin: 30px 0 30px 0;
-        font-size: ${theme.fonts.size.P5};
-    }
-    
-    hr {
-        border: 1px solid ${theme.colors.loginLine};
-    }
-    
-    h2 {
-        margin-top: 40px;
-        font-size: ${theme.fonts.size.P4};
-    }
     
     .form-container {
         display: flex;
