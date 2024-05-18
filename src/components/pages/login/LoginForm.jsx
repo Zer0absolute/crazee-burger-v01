@@ -6,17 +6,21 @@ import { BsPersonCircle } from "react-icons/bs";
 import { IoIosArrowForward } from "react-icons/io";
 import {Button} from "../../reusable-ui/Button.jsx";
 import {theme} from "../../../theme/index.jsx";
+import { authenticateUser } from "../../../api/user.js";
 
 export const LoginForm = () => {
-    const [inputValue, setInputValue] = useState('');
+    const [username, setUsername] = useState('');
     const navigate = useNavigate()
+    
     const handleSubmit = (event) => {
         event.preventDefault()
-        setInputValue('')
-        navigate(`order/${inputValue}`)
+        authenticateUser(username)
+        setUsername('')
+        navigate(`order/${username}`)
     }
+
     const handleChange = (event) => {
-        setInputValue(event.target.value)
+        setUsername(event.target.value)
     }
 
     return <LoginFormStyled action={'submit'} onSubmit={handleSubmit}>
@@ -27,7 +31,7 @@ export const LoginForm = () => {
             </div>
             <div className="form-container">
                 <TextInput
-                    value={inputValue}
+                    value={username}
                     onChange={handleChange}
                     Icon={<BsPersonCircle />}
                     placeholder='Entrez votre prénom'
