@@ -2,13 +2,14 @@ import styled from "styled-components";
 import {theme} from "../../../theme/index.jsx";
 import {Navbar} from "./Navbar/Navbar.jsx";
 import {Main} from "./main/Main.jsx";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import OrderContext from "../../../context/OrderContext.jsx"
 import { EMPTY_PRODUCT } from "../../../enums/product.js";
 import { useMenu } from "../../../hooks/useMenu.jsx";
 import { useBasket } from "../../../hooks/useBasket.jsx";
 import { findObjectById } from "../../../utils/array.js";
 import { useParams } from "react-router-dom";
+import { getMenu } from "../../../api/product.js";
 
 export const OrderPage = () => {
     const [isModeAdmin, setIsModeAdmin] = useState(false);
@@ -28,6 +29,15 @@ export const OrderPage = () => {
         await setProductSelected(productClickOn)
         titleEditRef.current.focus()
     }
+    const initialiseMenu = async () => {
+        const menuReceived = await getMenu(username)
+        setMenu(menuReceived)
+    }
+
+    useEffect(() => {
+        initialiseMenu()
+    }, [])
+    
 
     const orderContextValue = {
         username,
