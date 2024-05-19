@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { TextInput } from "../../../../../../reusable-ui/TextInput";
-import { getInputTextsConfig } from "./inputTextConfig";
+import { TextInput } from "./TextInput";
+import { getInputTextsConfig } from "../pages/order/main/MainRightSide/admin/AdminPanel/forms/inputTextConfig";
 import ImagePreview from './ImagePreview';
 import { forwardRef } from "react";
 
-const Form = forwardRef(({ product, onSubmit, onChange, children}, ref) => {
+const Form = forwardRef(({ product, onSubmit, onChange, onFocus, onBlur, children}, ref) => {
     const inputTexts = getInputTextsConfig(product)
 
     return (
@@ -15,6 +15,8 @@ const Form = forwardRef(({ product, onSubmit, onChange, children}, ref) => {
                     key={input.id}
                     onChange={onChange}
                     version={'minimalist'}
+                    onFocus={onFocus}
+                    onBlur={onBlur}
                     ref={ref && input.name === 'title' ? ref : null}
                     {...input}
                     />
