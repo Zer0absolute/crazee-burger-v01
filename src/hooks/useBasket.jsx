@@ -4,7 +4,7 @@ import { deepClone, findObjectById, removeObjectById, findIndexById } from "../u
 import { setLocalStorage } from "../utils/windows"
 
 export const useBasket = () => {
-    const [basket, setBasket] = useState(fakeBasket.EMPTY)
+    const [basket, setBasket] = useState([])
 
     const handleAddToBasket = (idProductToAdd, username) => {
         const basketCopy = deepClone(basket)
@@ -39,5 +39,5 @@ export const useBasket = () => {
         setBasket(basketUpdated)
     }
 
-    return { basket, handleAddToBasket, handleDeleteBasketProduct }
+    return { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct }
 }

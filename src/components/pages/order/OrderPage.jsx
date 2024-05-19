@@ -10,6 +10,7 @@ import { useBasket } from "../../../hooks/useBasket.jsx";
 import { findObjectById } from "../../../utils/array.js";
 import { useParams } from "react-router-dom";
 import { getMenu } from "../../../api/product.js";
+import { getLocalStorage } from "../../../utils/windows.js";
 
 export const OrderPage = () => {
     const [isModeAdmin, setIsModeAdmin] = useState(false);
@@ -19,7 +20,7 @@ export const OrderPage = () => {
     const [ productSelected, setProductSelected ] = useState(EMPTY_PRODUCT)
     const titleEditRef = useRef()
     const { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu()
-    const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
+    const { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
     const { username } = useParams()
 
     const handleProductSelected = async (idProductClicked) => {
@@ -29,13 +30,23 @@ export const OrderPage = () => {
         await setProductSelected(productClickOn)
         titleEditRef.current.focus()
     }
+
     const initialiseMenu = async () => {
         const menuReceived = await getMenu(username)
         setMenu(menuReceived)
     }
 
+    const initialiseBasket = (username) => {
+        const basketReceived = getLocalStorage(username)
+        setBasket(basketReceived)
+    }
+
     useEffect(() => {
         initialiseMenu()
+    }, [])
+
+    useEffect(() => {
+        initialiseBasket()
     }, [])
     
 
@@ -59,6 +70,7 @@ export const OrderPage = () => {
         handleEdit,
         titleEditRef,
         basket,
+        setBasket,
         handleAddToBasket,
         handleDeleteBasketProduct,
         handleProductSelected,
