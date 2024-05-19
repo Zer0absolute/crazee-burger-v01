@@ -6,28 +6,29 @@ import { BsPersonCircle } from "react-icons/bs";
 import { IoIosArrowForward } from "react-icons/io";
 import {Button} from "../../reusable-ui/Button.jsx";
 import {theme} from "../../../theme/index.jsx";
+import { authenticateUser } from "../../../api/user.js";
+import Welcome from "./Welcome.jsx";
 
 export const LoginForm = () => {
-    const [inputValue, setInputValue] = useState('');
+    const [username, setUsername] = useState('');
     const navigate = useNavigate()
+    
     const handleSubmit = (event) => {
         event.preventDefault()
-        setInputValue('')
-        navigate(`order/${inputValue}`)
+        authenticateUser(username)
+        setUsername('')
+        navigate(`order/${username}`)
     }
+
     const handleChange = (event) => {
-        setInputValue(event.target.value)
+        setUsername(event.target.value)
     }
 
     return <LoginFormStyled action={'submit'} onSubmit={handleSubmit}>
-            <div>
-                <h1>Bienvenue chez nous !</h1>
-                <hr/>
-                <h2>Connectez-vous</h2>
-            </div>
+            <Welcome />
             <div className="form-container">
                 <TextInput
-                    value={inputValue}
+                    value={username}
                     onChange={handleChange}
                     Icon={<BsPersonCircle />}
                     placeholder='Entrez votre prénom'
@@ -45,28 +46,6 @@ export const LoginForm = () => {
 
 const LoginFormStyled = styled.form`
     width: 400px;
-    
-    h1, h2 {
-        font-family: Amatic SC, cursive;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: ${theme.colors.white};
-    }
-    
-    h1 {
-        margin: 30px 0 30px 0;
-        font-size: ${theme.fonts.size.P5};
-    }
-    
-    hr {
-        border: 1px solid ${theme.colors.loginLine};
-    }
-    
-    h2 {
-        margin-top: 40px;
-        font-size: ${theme.fonts.size.P4};
-    }
     
     .form-container {
         display: flex;

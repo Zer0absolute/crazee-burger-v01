@@ -1,6 +1,7 @@
 import { createContext } from "react";
 
 export default createContext({
+    username: "",
     isModeAdmin: false,
     setIsModeAdmin: () => {},
 
@@ -28,6 +29,7 @@ export default createContext({
     titleEditRef: {},
 
     basket: [],
+    setBasket: () => {},
     handleAddToBasket: () => {},
     handleDeleteBasketProduct: () => {},
 })

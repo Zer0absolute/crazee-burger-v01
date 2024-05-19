@@ -1,5 +1,5 @@
-import { Button } from "../../../../../../reusable-ui/Button";
-import SubmitMessage from "./SubmitMessage";
+import { Button } from "../../../../../../../reusable-ui/Button";
+import SubmitMessage from "../message/SubmitMessage";
 
 export default function SubmitButton({ isSubmitted }) {
     return (

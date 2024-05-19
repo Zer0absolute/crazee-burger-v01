@@ -2,12 +2,16 @@ import styled from "styled-components";
 import {theme} from "../../../theme/index.jsx";
 import {Navbar} from "./Navbar/Navbar.jsx";
 import {Main} from "./main/Main.jsx";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import OrderContext from "../../../context/OrderContext.jsx"
 import { EMPTY_PRODUCT } from "../../../enums/product.js";
 import { useMenu } from "../../../hooks/useMenu.jsx";
 import { useBasket } from "../../../hooks/useBasket.jsx";
 import { findObjectById } from "../../../utils/array.js";
+import { useParams } from "react-router-dom";
+import { getMenu } from "../../../api/product.js";
+import { getLocalStorage } from "../../../utils/windows.js";
+import { initialiseUserSession } from "./helpers/initialiseUserSession.js";
 
 export const OrderPage = () => {
     const [isModeAdmin, setIsModeAdmin] = useState(false);
@@ -17,7 +21,8 @@ export const OrderPage = () => {
     const [ productSelected, setProductSelected ] = useState(EMPTY_PRODUCT)
     const titleEditRef = useRef()
     const { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu()
-    const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
+    const { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
+    const { username } = useParams()
 
     const handleProductSelected = async (idProductClicked) => {
         const productClickOn = findObjectById(idProductClicked, menu)
@@ -27,7 +32,12 @@ export const OrderPage = () => {
         titleEditRef.current.focus()
     }
 
+    useEffect(() => {
+        initialiseUserSession(username, setMenu, setBasket)
+    }, [])
+
     const orderContextValue = {
+        username,
         isModeAdmin,
         setIsModeAdmin,
         isCollapsed,
@@ -46,9 +56,10 @@ export const OrderPage = () => {
         handleEdit,
         titleEditRef,
         basket,
+        setBasket,
         handleAddToBasket,
         handleDeleteBasketProduct,
-        handleProductSelected
+        handleProductSelected,
     }
 
     return (
