@@ -38,10 +38,10 @@ export const Menu = () => {
     }
 
     if(!menu) return <Loader />
-    
+
     if(isEmpty(menu)) {
         if(!isModeAdmin) return <EmptyMenuClient />
-        return isModeAdmin && <EmptyMenuAdmin onReset={() => resetMenu()}/>
+        return isModeAdmin && <EmptyMenuAdmin onReset={() => resetMenu(username)}/>
     }
 
     return (
