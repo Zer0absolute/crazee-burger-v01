@@ -13,11 +13,12 @@ export const useMenu = () => {
         syncBothMenus(username, menuUpdate)
     }
 
-    const handleEdit = (productBeingEdited) => {
+    const handleEdit = (productBeingEdited, username) => {
         const menuCopy = deepClone(menu)
         const indexOfProducToEdit = findIndexById(productBeingEdited.id, menuCopy)
         menuCopy[indexOfProducToEdit] = productBeingEdited
         setMenu(menuCopy)
+        syncBothMenus(username, menuCopy)
     }
 
     const handleDelete = (productId, username) => {
