@@ -4,7 +4,7 @@ import { useState } from "react";
 import { syncBothMenus } from "../api/product";
 
 export const useMenu = () => {
-    const [menu, setMenu] = useState(fakeMenu.LARGE);
+    const [menu, setMenu] = useState();
 
     const handleAdd = (newProduct, username) => { 
         const menuCopy = deepClone(menu)

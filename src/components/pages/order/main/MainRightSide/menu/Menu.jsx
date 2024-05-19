@@ -9,6 +9,7 @@ import { Card } from "../../../../../reusable-ui/Card.jsx";
 import { checkIfProductIsClicked } from "./helper.jsx";
 import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../../../../enums/product.js";
 import { isEmpty } from "../../../../../../utils/array.js";
+import Loader from "./Loader.jsx";
 
 export const Menu = () => {
     const { 
@@ -35,6 +36,8 @@ export const Menu = () => {
         handleAddToBasket(idProductToAdd)
     }
 
+    if(!menu) return <Loader />
+    
     if(isEmpty(menu)) {
         if(!isModeAdmin) return <EmptyMenuClient />
         return isModeAdmin && <EmptyMenuAdmin onReset={() => resetMenu()}/>
