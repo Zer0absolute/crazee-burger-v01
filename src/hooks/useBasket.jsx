@@ -33,10 +33,11 @@ export const useBasket = () => {
         setLocalStorage(username, newBasket)
     }
 
-    const handleDeleteBasketProduct = (idBasketProduct) => {
+    const handleDeleteBasketProduct = (idBasketProduct, username) => {
         const basketCopy = deepClone(basket)
         const basketUpdated = removeObjectById(idBasketProduct, basketCopy)
         setBasket(basketUpdated)
+        setLocalStorage(username, basketUpdated)
     }
 
     return { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct }

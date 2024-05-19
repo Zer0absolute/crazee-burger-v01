@@ -41,14 +41,14 @@ export const OrderPage = () => {
         if(basketReceived) setBasket(basketReceived)
     }
 
-    useEffect(() => {
-        initialiseMenu()
-    }, [])
+    const initialiseUserSession = async () => {
+        await initialiseMenu()
+        initialiseBasket()
+    }
 
     useEffect(() => {
-        initialiseBasket()
+        initialiseUserSession()
     }, [])
-    
 
     const orderContextValue = {
         username,
