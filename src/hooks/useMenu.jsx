@@ -20,10 +20,11 @@ export const useMenu = () => {
         setMenu(menuCopy)
     }
 
-    const handleDelete = (productId) => {
+    const handleDelete = (productId, username) => {
         const menuCopy = deepClone(menu)
         const menuUpdated = removeObjectById(productId, menuCopy)
         setMenu(menuUpdated)
+        syncBothMenus(username, menuUpdated)
     }
 
     const resetMenu = () => {
