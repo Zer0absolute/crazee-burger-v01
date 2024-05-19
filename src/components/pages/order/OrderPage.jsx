@@ -38,7 +38,7 @@ export const OrderPage = () => {
 
     const initialiseBasket = (username) => {
         const basketReceived = getLocalStorage(username)
-        setBasket(basketReceived)
+        if(basketReceived) setBasket(basketReceived)
     }
 
     useEffect(() => {
