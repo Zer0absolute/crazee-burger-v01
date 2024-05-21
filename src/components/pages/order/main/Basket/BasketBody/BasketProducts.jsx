@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import BasketCard from "../BasketCard";
+import BasketCard from "./BasketCard";
 import { findObjectById } from "../../../../../../utils/array";
 import { useContext } from "react";
 import OrderContext from "../../../../../../context/OrderContext";
