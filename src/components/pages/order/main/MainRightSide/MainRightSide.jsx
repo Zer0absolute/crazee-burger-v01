@@ -11,13 +11,7 @@ export const MainRightSide = () => {
     return (
         <MainRightSideStyled>
             <Menu />
-            {isModeAdmin && (
-                <TransitionGroup classNames={"transitiongroup"}>
-                    <CSSTransition appear classNames={"admin"} timeout={500}>
-                        <Admin />
-                    </CSSTransition>
-                </TransitionGroup>
-            )}
+            {isModeAdmin && <Admin />}
         </MainRightSideStyled>
     )
 }
@@ -26,6 +20,4 @@ const MainRightSideStyled = styled.div`
     display: grid;
     position: relative;
     overflow-y: hidden; 
-
-    ${adminAnimation}
 `
