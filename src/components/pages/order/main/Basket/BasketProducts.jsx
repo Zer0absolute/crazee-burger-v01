@@ -27,8 +27,8 @@ export default function BasketProducts() {
                 {basket.map((basketProduct) => {
                     const menuProduct = findObjectById(basketProduct.id, menu)
                     return (
-                        <CSSTransition appear={true} classNames={"basket-card slide-in-out"} key={basketProduct.id} timeout={500}>
-                            <div className="basket-card">
+                        <CSSTransition appear={true} classNames={"slide-out"} key={basketProduct.id} timeout={500}>
+                            <div className="card-container">
                                 <BasketCard
                                     {...menuProduct}
                                     onDelete={(event) => handleOnDelete(event, basketProduct.id)}
@@ -59,16 +59,16 @@ const BasketProductsStyled = styled.div`
         scrollbar-color: initial;
     }
 
-    .slide-in-out-enter,
-    .slide-in-out-appear {
+    .slide-out-enter,
+    .slide-out-appear {
         .card {
             transform: translateX(100px);
             opacity: 0%;
         }
     }
 
-    .slide-in-out-enter-active,
-    .slide-in-out-appear-active  {
+    .slide-out-enter-active,
+    .slide-out-appear-active  {
         .card {
             transform: translateX(0px);
             opacity: 100%;
@@ -76,14 +76,14 @@ const BasketProductsStyled = styled.div`
         }
     }
 
-    .slide-in-out-exit {
+    .slide-out-exit {
         .card {
             transform: translateX(0px);
             opacity: 100%;
         }
     }
 
-    .slide-in-out-exit-active {
+    .slide-out-exit-active {
         .card {
             transform: translateX(-100px);
             opacity: 0%;
@@ -91,7 +91,7 @@ const BasketProductsStyled = styled.div`
         }
     }
 
-    .basket-card {
+    .card-container {
         margin: 10px 0;
         margin-left: 16px;
         height: 86px;
