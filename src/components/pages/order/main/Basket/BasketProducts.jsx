@@ -4,6 +4,7 @@ import { findObjectById } from "../../../../../utils/array";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import { checkIfProductIsClicked } from "../MainRightSide/menu/helper";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 export default function BasketProducts() {
     const {
@@ -22,23 +23,26 @@ export default function BasketProducts() {
     }
 
     return (
-        <BasketProductsStyled>
-            {basket.map((basketProduct) => {
-                const menuProduct = findObjectById(basketProduct.id, menu)
-                return (
-                    <div className="basket-card" key={basketProduct.id}>
-                        <BasketCard 
-                            {...menuProduct}
-                            onDelete={(event) => handleOnDelete(event, basketProduct.id)}
-                            quantity={basketProduct.quantity}
-                            isClickable={isModeAdmin}
-                            onClick={isModeAdmin ? () => handleProductSelected(basketProduct.id) : null}
-                            isSelected={checkIfProductIsClicked(basketProduct.id, productSelected.id)}
-                        />
-                    </div>
-                )
-            })}
-        </BasketProductsStyled>
+            <TransitionGroup component={BasketProductsStyled}>
+                {basket.map((basketProduct) => {
+                    const menuProduct = findObjectById(basketProduct.id, menu)
+                    return (
+                        <CSSTransition appear={true} classNames={"basket-card slide-in-out"} key={basketProduct.id} timeout={500}>
+                            <div className="basket-card">
+                                <BasketCard
+                                    {...menuProduct}
+                                    onDelete={(event) => handleOnDelete(event, basketProduct.id)}
+                                    quantity={basketProduct.quantity}
+                                    isClickable={isModeAdmin}
+                                    onClick={isModeAdmin ? () => handleProductSelected(basketProduct.id) : null}
+                                    isSelected={checkIfProductIsClicked(basketProduct.id, productSelected.id)}
+                                    className={"card"}
+                                />
+                            </div>
+                        </CSSTransition>
+                    )
+                })}
+            </TransitionGroup>
     )
 }
 
@@ -49,9 +53,42 @@ const BasketProductsStyled = styled.div`
     flex-direction: column;
     overflow-y: scroll;
     overflow-x: hidden;
+    
     &:hover {
         overflow: auto;
         scrollbar-color: initial;
+    }
+
+    .slide-in-out-enter,
+    .slide-in-out-appear {
+        .card {
+            transform: translateX(100px);
+            opacity: 0%;
+        }
+    }
+
+    .slide-in-out-enter-active,
+    .slide-in-out-appear-active  {
+        .card {
+            transform: translateX(0px);
+            opacity: 100%;
+            transition: 0.5s;
+        }
+    }
+
+    .slide-in-out-exit {
+        .card {
+            transform: translateX(0px);
+            opacity: 100%;
+        }
+    }
+
+    .slide-in-out-exit-active {
+        .card {
+            transform: translateX(-100px);
+            opacity: 0%;
+            transition: 0.5s;
+        }
     }
 
     .basket-card {
