@@ -3,6 +3,7 @@ import {formatPrice} from "../../utils/maths.js";
 import {theme} from "../../theme/index.jsx";
 import {Button} from "./Button.jsx";
 import { TiDelete } from "react-icons/ti";
+import { fadeInFromRight } from "../../theme/animation.js";
 
 export const Card = ({imageSource, title, price, hasDeleteButton, onDelete, onClick, isHoverable, isSelected, onAdd}) => {
     return (
@@ -67,6 +68,7 @@ const CardStyled = styled.div`
                 font-size: 30px;
                 background: none;
                 color: ${theme.colors.primary};
+                animation: ${fadeInFromRight} 300ms ease-out;
 
                 &:hover {
                     color: ${theme.colors.red};
