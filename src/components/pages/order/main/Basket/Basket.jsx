@@ -7,7 +7,6 @@ import OrderContext from "../../../../../context/OrderContext";
 import BasketProducts from "./BasketProducts";
 import { theme } from "../../../../../theme";
 import { isEmpty } from "../../../../../utils/array";
-import Loader from "../MainRightSide/menu/Loader";
 
 export default function Basket() {
     const { basket, menu } = useContext(OrderContext)

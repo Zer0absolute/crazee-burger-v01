@@ -5,6 +5,7 @@ import { formatPrice } from "../../../../../utils/maths";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import { calculateSumToPay } from "./helpers";
+import CassinoEffect from "../../../../reusable-ui/CassinoEffect";
 
 export default function Total() {
     const { basket, menu } = useContext(OrderContext)
@@ -14,7 +15,7 @@ export default function Total() {
         <Header>
             <TotalStyled>
                 <span>Total</span>
-                <span>{formatPrice(sumToPay)}</span>
+                <CassinoEffect count={formatPrice(sumToPay)}/>
             </TotalStyled>
         </Header>
     )
