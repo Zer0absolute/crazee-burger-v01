@@ -5,6 +5,7 @@ import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import { checkIfProductIsClicked } from "../MainRightSide/menu/helper";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { basketAnimation } from "../../../../../theme/animation";
 
 export default function BasketProducts() {
     const {
@@ -27,7 +28,7 @@ export default function BasketProducts() {
                 {basket.map((basketProduct) => {
                     const menuProduct = findObjectById(basketProduct.id, menu)
                     return (
-                        <CSSTransition appear={true} classNames={"slide-out"} key={basketProduct.id} timeout={500}>
+                        <CSSTransition appear={true} classNames={"slide-out"} key={basketProduct.id} timeout={300}>
                             <div className="card-container">
                                 <BasketCard
                                     {...menuProduct}
@@ -58,52 +59,22 @@ const BasketProductsStyled = styled.div`
         overflow: auto;
         scrollbar-color: initial;
     }
-
-    .slide-out-enter,
-    .slide-out-appear {
-        .card {
-            transform: translateX(100px);
-            opacity: 0%;
-        }
-    }
-
-    .slide-out-enter-active,
-    .slide-out-appear-active  {
-        .card {
-            transform: translateX(0px);
-            opacity: 100%;
-            transition: 0.5s;
-        }
-    }
-
-    .slide-out-exit {
-        .card {
-            transform: translateX(0px);
-            opacity: 100%;
-        }
-    }
-
-    .slide-out-exit-active {
-        .card {
-            transform: translateX(-100px);
-            opacity: 0%;
-            transition: 0.5s;
-        }
-    }
-
+    
     .card-container {
         margin: 10px 0;
         margin-left: 16px;
         height: 86px;
         width: 318px;
         box-sizing: border-box;
-
+        
         &:first-child {
             margin-top: 20px;
-
+            
             &:last-child { 
                 margin-bottom: 20px;
             }
         }
     }
+
+    ${basketAnimation}
 `;

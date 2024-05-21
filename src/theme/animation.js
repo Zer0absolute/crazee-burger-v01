@@ -12,3 +12,38 @@ export const adminAnimation = css`
         }
     }
 `
+
+export const basketAnimation = css`
+    .slide-out-enter,
+    .slide-out-appear {
+        .card {
+            transform: translateX(100px);
+            opacity: 0%;
+            transition: 300ms;
+        }
+    }
+
+    .slide-out-enter-active,
+    .slide-out-appear-active  {
+        .card {
+            transform: translateX(0px);
+            opacity: 100%;
+            transition: 300ms;
+        }
+    }
+
+    .slide-out-exit {
+        .card {
+            transform: translateX(0px);
+            opacity: 100%;
+        }
+    }
+
+    .slide-out-exit-active {
+        .card {
+            transform: translateX(-100px);
+            opacity: 0%;
+            transition: 300ms;
+        }
+    }
+`
