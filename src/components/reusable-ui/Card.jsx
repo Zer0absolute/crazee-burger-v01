@@ -68,7 +68,7 @@ const CardStyled = styled.div`
                 font-size: 30px;
                 background: none;
                 color: ${theme.colors.primary};
-                animation: ${fadeInFromRight} 300ms ease-out;
+                animation: ${fadeInFromRight} 500ms ease-out;
 
                 &:hover {
                     color: ${theme.colors.red};
