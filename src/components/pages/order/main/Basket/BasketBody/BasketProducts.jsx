@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import BasketCard from "./BasketCard";
-import { findObjectById } from "../../../../../utils/array";
+import BasketCard from "../BasketCard";
+import { findObjectById } from "../../../../../../utils/array";
 import { useContext } from "react";
-import OrderContext from "../../../../../context/OrderContext";
-import { checkIfProductIsClicked } from "../MainRightSide/menu/helper";
+import OrderContext from "../../../../../../context/OrderContext";
+import { checkIfProductIsClicked } from "../../MainRightSide/menu/helper";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import { basketAnimation } from "../../../../../theme/animation";
+import { basketAnimation } from "../../../../../../theme/animation";
 
 export default function BasketProducts() {
     const {
