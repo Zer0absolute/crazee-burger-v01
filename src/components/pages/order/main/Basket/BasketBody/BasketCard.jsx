@@ -3,6 +3,7 @@ import { MdDeleteForever } from "react-icons/md"
 import { theme } from "../../../../../../theme"
 import { formatPrice } from "../../../../../../utils/maths"
 import { IMAGE_BY_DEFAULT } from "../../../../../../enums/product"
+import CassinoEffect from "../../../../../reusable-ui/CassinoEffect"
 
 export default function BasketCard({
     title,
@@ -31,7 +32,8 @@ export default function BasketCard({
                     <span className="price">{formatPrice(price)}</span>
                 </div>
                 <div className="quantity">
-                    <span>x {quantity}</span>
+                    {/* <span></span> */}
+                    <CassinoEffect count={`x ${quantity}`}/>
                 </div>
             </div>
         </BasketCardStyled>
