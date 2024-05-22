@@ -1,22 +1,15 @@
 import styled from "styled-components";
-import Total from "./Total";
-import EmptyBasket from "./EmptyBasket";
-import Footer from "./Footer";
-import { useContext } from "react";
-import OrderContext from "../../../../../context/OrderContext";
-import BasketProducts from "./BasketProducts";
+import BasketHeader from "./BasketHeader/BasketHeader";
+import BasketFooter from "./BasketFooter";
 import { theme } from "../../../../../theme";
-import { isEmpty } from "../../../../../utils/array";
-import Loader from "../MainRightSide/menu/Loader";
+import BasketBody from "./BasketBody/BasketBody";
 
 export default function Basket() {
-    const { basket, menu } = useContext(OrderContext)
-    
     return (
         <BasketStyled>
-            <Total />
-            {isEmpty(basket) ? <EmptyBasket isLoading={!menu}/> : <BasketProducts />}            
-            <Footer />
+            <BasketHeader />
+            <BasketBody />            
+            <BasketFooter />
         </BasketStyled>
     )
 }
@@ -31,8 +24,7 @@ const BasketStyled = styled.div`
     overflow-y: hidden; 
 
     .head {
-        position: sticky;
-        top: 0;
+
     }
 
     .footer {

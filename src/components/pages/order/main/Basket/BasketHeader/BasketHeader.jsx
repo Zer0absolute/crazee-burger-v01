@@ -1,26 +1,27 @@
 import styled from "styled-components";
-import { theme } from "../../../../../theme";
-import Header from "../../../../reusable-ui/Header";
-import { formatPrice } from "../../../../../utils/maths";
+import { theme } from "../../../../../../theme";
+import Header from "../../../../../reusable-ui/Header";
+import { formatPrice } from "../../../../../../utils/maths";
 import { useContext } from "react";
-import OrderContext from "../../../../../context/OrderContext";
+import OrderContext from "../../../../../../context/OrderContext";
 import { calculateSumToPay } from "./helpers";
+import CassinoEffect from "../../../../../reusable-ui/CassinoEffect";
 
-export default function Total() {
+export default function BasketHeader() {
     const { basket, menu } = useContext(OrderContext)
     const sumToPay = calculateSumToPay(basket, menu)
 
     return (
         <Header>
-            <TotalStyled>
+            <BasketHeaderStyled>
                 <span>Total</span>
-                <span>{formatPrice(sumToPay)}</span>
-            </TotalStyled>
+                <CassinoEffect count={formatPrice(sumToPay)}/>
+            </BasketHeaderStyled>
         </Header>
     )
 }
 
-const TotalStyled = styled.div`
+const BasketHeaderStyled = styled.div`
     height: 100%;
     display: flex;
     justify-content: space-between;
