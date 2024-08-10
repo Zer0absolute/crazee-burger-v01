@@ -5,7 +5,6 @@ import {TextInput} from "../../reusable-ui/TextInput.jsx";
 import { BsPersonCircle } from "react-icons/bs";
 import { IoIosArrowForward } from "react-icons/io";
 import {Button} from "../../reusable-ui/Button.jsx";
-import {theme} from "../../../theme/index.jsx";
 import { authenticateUser } from "../../../api/user.js";
 import Welcome from "./Welcome.jsx";
 
@@ -13,11 +12,11 @@ export const LoginForm = () => {
     const [username, setUsername] = useState('');
     const navigate = useNavigate()
     
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        authenticateUser(username)
-        setUsername('')
-        navigate(`order/${username}`)
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const userReceived = await authenticateUser(username);
+        setUsername('');
+        navigate(`order/${userReceived.username}`);
     }
 
     const handleChange = (event) => {
