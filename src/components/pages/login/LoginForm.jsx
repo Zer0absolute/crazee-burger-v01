@@ -13,10 +13,10 @@ export const LoginForm = () => {
     const navigate = useNavigate()
     
     const handleSubmit = async (event) => {
-        event.preventDefault();
-        const userReceived = await authenticateUser(username);
-        setUsername('');
-        navigate(`order/${userReceived.username}`);
+        event.preventDefault()
+        const userReceived =  await authenticateUser(username)
+        setUsername('')
+        navigate(`order/${userReceived.username}`)
     }
 
     const handleChange = (event) => {
